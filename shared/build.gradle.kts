@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.kotlinPluginSerialization)
     alias(libs.plugins.androidLibrary)
+    id("maven-publish")
 }
 
 kotlin {
@@ -12,12 +14,20 @@ kotlin {
         }
     }
 
+    jvm()
+
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+            implementation(libs.kotlinx.coroutines)
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.kotlinx.io)
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.okio)
+            implementation(libs.okhttp)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+            implementation(libs.kotlinx.coroutines.test)
         }
     }
 
@@ -25,7 +35,7 @@ kotlin {
 }
 
 android {
-    namespace = "hamusutax.core"
+    namespace = "hamusutax"
     compileSdk = 34
     defaultConfig {
         minSdk = 28
