@@ -33,4 +33,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "HamusutaX"
-include(":shared")
+include(":core")
+include(":android")
+include(":core-jvm")
