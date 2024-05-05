@@ -2,8 +2,8 @@
 package hamusutax.android.sharedpreferences
 
 import android.content.SharedPreferences
-import hamusutax.number.bitsToDouble
-import hamusutax.number.toLongBits
+import hamusutax.core.number.bitsToDouble
+import hamusutax.core.number.toLongBits
 import java.io.IOException
 
 fun SharedPreferences.getString(key: String) =
