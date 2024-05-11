@@ -1,5 +1,5 @@
 @file:Suppress("UNUSED")
-package hamusutax.core.collections
+package hamusutax.core.collections.bytearray
 
 /**
  * 在字节序列前部填充

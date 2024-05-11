@@ -1,4 +1,4 @@
-package hamusutax.core.collections
+package hamusutax.core.collections.map
 
 operator fun <K1, K2, V> Map<K1, Map<K2, V>>.get(key1: K1, key2: K2) =
     get(key1)?.get(key2)

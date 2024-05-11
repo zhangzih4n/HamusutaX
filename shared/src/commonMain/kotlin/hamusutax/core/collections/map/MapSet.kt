@@ -1,4 +1,4 @@
-package hamusutax.core.collections
+package hamusutax.core.collections.map
 
 operator fun <K1, K2, V> MutableMap<K1, MutableMap<K2, V>>.set(key1: K1, key2: K2, value: V) {
     this[key1]?.let {
