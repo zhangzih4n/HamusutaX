@@ -15,6 +15,7 @@ operator fun <K1, K2, K3, V> MutableMap<K1, MutableMap<K2, MutableMap<K3, V>>>.s
             return
         }
         value1[key2] = mutableMapOf(key3 to value)
+        return
     }
     this[key1] = mutableMapOf(key2 to mutableMapOf(key3 to value))
 }
@@ -27,8 +28,10 @@ operator fun <K1, K2, K3, K4, V> MutableMap<K1, MutableMap<K2, MutableMap<K3, Mu
                 return
             }
             value2[key3] = mutableMapOf(key4 to value)
+            return
         }
         value1[key2] = mutableMapOf(key3 to mutableMapOf(key4 to value))
+        return
     }
     this[key1] = mutableMapOf(key2 to mutableMapOf(key3 to mutableMapOf(key4 to value)))
 }
