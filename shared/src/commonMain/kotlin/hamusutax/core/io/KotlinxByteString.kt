@@ -7,4 +7,4 @@ fun ByteArray.toByteString() =
     ByteString(this)
 
 fun byteStringOf(vararg elements: Byte) =
-    byteArrayOf(*elements).toByteString()
+    ByteString(byteArrayOf(*elements))

@@ -41,10 +41,11 @@ fun ByteArray.sliceArrayOrPadEnd(newSize: Int, padByte: Byte = 0) =
     else if (newSize < size) sliceArray(0..<newSize)
     else padEnd(newSize, padByte)
 
-/**
- * 展开字节序列
- */
-fun List<ByteArray>.toByteArray() =
-    flatMap { it.asList() }.toByteArray()
 
-fun emptyByteArray() = ByteArray(0)
+fun ByteArray.chunked(size: Int): List<ByteArray> {
+    val list = mutableListOf<ByteArray>()
+    for (i in indices step size) {
+        list.add(sliceArray(i..<minOf(i + size, this.size)))
+    }
+    return list
+}

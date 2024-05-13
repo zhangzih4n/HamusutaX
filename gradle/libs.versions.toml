@@ -11,10 +11,10 @@ androidxEspressoCore = "3.5.1"
 androidxCoreKtx = "1.13.1"
 androidxActivityCompose = "1.9.0"
 androidxLifecycleRuntimeKtx = "2.7.0"
-coroutines = "1.8.0"
+coroutines = "1.8.1"
 collectionsImmutable = "0.3.7"
 datetime = "0.5.0"
-io = "0.3.2"
+io = "0.3.4"
 serialization = "1.6.3"
 okio = "3.9.0"
 okhttp = "5.0.0-alpha.12"
@@ -48,6 +48,8 @@ kotlinx-io = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-core", versio
 kotlinx-io-bytestring = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-bytestring", version.ref = "io" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
 okio = { group = "com.squareup.okio", name = "okio", version.ref = "okio" }
+okio-nodefilesystem = { group = "com.squareup.okio", name = "okio-nodefilesystem", version.ref = "okio" }
+okio-fakefilesystem = { group = "com.squareup.okio", name = "okio-fakefilesystem", version.ref = "okio" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 ksoup = { group = "com.fleeksoft.ksoup", name = "ksoup", version.ref = "ksoup" }
 
