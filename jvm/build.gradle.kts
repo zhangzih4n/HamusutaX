@@ -15,7 +15,8 @@ dependencies {
 
 publishing {
     publications {
-        register("mavenJava", MavenPublication::class) {
+        withType<MavenPublication> {
+            groupId = "hamusuta"
             artifactId = "hamusutax-jvm"
 
             afterEvaluate {

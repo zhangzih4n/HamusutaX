@@ -67,8 +67,9 @@ android {
 
 publishing {
     publications {
-        register("mavenJava", MavenPublication::class) {
-            artifactId = "hamusutax-core"
+        withType<MavenPublication> {
+            groupId = "hamusuta"
+            artifactId = "hamusutax-core-${artifactId.split('-').last()}"
         }
     }
 }

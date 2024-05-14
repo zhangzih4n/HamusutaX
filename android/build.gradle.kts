@@ -60,7 +60,8 @@ tasks.withType<KotlinCompile> {
 
 publishing {
     publications {
-        register<MavenPublication>("release") {
+        withType<MavenPublication> {
+            groupId = "hamusuta"
             artifactId = "hamusutax-android"
 
             afterEvaluate {
