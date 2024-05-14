@@ -16,8 +16,7 @@ dependencies {
 publishing {
     publications {
         withType<MavenPublication> {
-            groupId = "hamusuta"
-            artifactId = "hamusutax-jvm"
+            artifactId = "jvm"
 
             afterEvaluate {
                 from(components["java"])

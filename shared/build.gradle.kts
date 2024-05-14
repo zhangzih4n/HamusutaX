@@ -64,12 +64,3 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
-
-publishing {
-    publications {
-        withType<MavenPublication> {
-            groupId = "hamusuta"
-            artifactId = "hamusutax-core-${artifactId.split('-').last()}"
-        }
-    }
-}
