@@ -64,3 +64,11 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 }
+
+publishing {
+    publications {
+        register("mavenJava", MavenPublication::class) {
+            artifactId = "hamusutax-core"
+        }
+    }
+}

@@ -1,5 +1,5 @@
 @file:Suppress("UNUSED")
-package hamusutax.jvm.io
+package hamusutax.core.io
 
 import java.io.InputStream
 import java.io.PushbackInputStream

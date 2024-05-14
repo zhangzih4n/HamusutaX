@@ -61,7 +61,7 @@ tasks.withType<KotlinCompile> {
 publishing {
     publications {
         register<MavenPublication>("release") {
-            artifactId = "android"
+            artifactId = "hamusutax-android"
 
             afterEvaluate {
                 from(components["release"])

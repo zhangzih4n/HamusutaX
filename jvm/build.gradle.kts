@@ -16,7 +16,7 @@ dependencies {
 publishing {
     publications {
         register("mavenJava", MavenPublication::class) {
-            artifactId = "jvm"
+            artifactId = "hamusutax-jvm"
 
             afterEvaluate {
                 from(components["java"])

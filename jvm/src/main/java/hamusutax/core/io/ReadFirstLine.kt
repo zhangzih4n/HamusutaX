@@ -1,5 +1,5 @@
 @file:Suppress("UNUSED")
-package hamusutax.jvm.io
+package hamusutax.core.io
 
 import java.io.File
 import java.nio.file.Path
