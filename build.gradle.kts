@@ -4,5 +4,5 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform) apply false
     alias(libs.plugins.kotlinPluginSerialization) apply false
     alias(libs.plugins.kotlinAndroid) apply false
-    alias(libs.plugins.jetbrainsKotlinJvm) apply false
+    alias(libs.plugins.kotlinJvm) apply false
 }
