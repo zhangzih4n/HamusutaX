@@ -22,6 +22,7 @@ inline fun buildIntent(packageContext: Context, clazz: Class<*>, builderAction: 
     return Intent(packageContext, clazz).apply(builderAction)
 }
 
+@JvmName("buildIntentExtend")
 inline fun Context.buildIntent(clazz: Class<*>, builderAction: Intent.() -> Unit) =
     buildIntent(this, clazz, builderAction)
 

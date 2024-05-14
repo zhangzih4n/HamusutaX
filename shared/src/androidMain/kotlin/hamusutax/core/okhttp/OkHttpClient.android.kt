@@ -1,5 +1,5 @@
 @file:Suppress("UNUSED")
-package hamusutax.core.http.okhttp
+package hamusutax.core.okhttp
 
 import okhttp3.OkHttpClient
 
