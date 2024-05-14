@@ -12,3 +12,12 @@ java {
 dependencies {
     implementation(libs.kotlinx.io)
 }
+
+publishing {
+    publications {
+        register("mavenJava", MavenPublication::class) {
+            from(components["java"])
+            artifactId = "jvm"
+        }
+    }
+}

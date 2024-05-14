@@ -33,6 +33,8 @@ kotlin {
             implementation(libs.kotlinx.datetime)
             implementation(libs.kotlinx.io)
             implementation(libs.kotlinx.serialization.json)
+
+            implementation(libs.coil.compose)
             implementation(libs.okio)
             implementation(libs.okhttp)
             implementation(libs.ksoup)
