@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinPluginSerialization)
+    id("maven-publish")
 }
 
 android {
@@ -33,12 +34,6 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
-
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-        }
-    }
 }
 
 dependencies {
@@ -61,4 +56,16 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.freeCompilerArgs += listOf(
         "-opt-in=kotlin.contracts.ExperimentalContracts"
     )
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            artifactId = "android"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
 }

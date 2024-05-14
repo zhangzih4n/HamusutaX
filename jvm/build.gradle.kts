@@ -16,8 +16,11 @@ dependencies {
 publishing {
     publications {
         register("mavenJava", MavenPublication::class) {
-            from(components["java"])
             artifactId = "jvm"
+
+            afterEvaluate {
+                from(components["java"])
+            }
         }
     }
 }
