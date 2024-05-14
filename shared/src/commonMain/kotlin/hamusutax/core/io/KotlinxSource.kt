@@ -35,10 +35,6 @@ fun Sink(file: String) =
 fun RawSource.readAtMostTo(sink: Buffer, byteCount: Int) =
     readAtMostTo(sink, byteCount.toLong())
 
-fun Buffer.isEmpty() = size == 0L
-
-fun Buffer.isNotEmpty() = size != 0L
-
 fun Source.request(byteCount: Int) =
     request(byteCount.toLong())
 

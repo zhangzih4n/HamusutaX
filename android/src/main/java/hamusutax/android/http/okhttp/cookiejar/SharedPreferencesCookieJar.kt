@@ -7,7 +7,7 @@ import android.content.SharedPreferences
 import hamusutax.android.sharedpreferences.clear
 import hamusutax.android.sharedpreferences.getStringSetOrNull
 import hamusutax.android.sharedpreferences.putStringSet
-import hamusutax.http.okhttp.toCookie
+import hamusutax.core.okhttp.toCookie
 import okhttp3.Cookie
 import okhttp3.CookieJar
 import okhttp3.HttpUrl

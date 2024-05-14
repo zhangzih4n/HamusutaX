@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinPluginSerialization)
+    id("maven-publish")
 }
 
 android {
@@ -37,12 +38,17 @@ android {
 
 dependencies {
     api(project(":shared"))
+    api(project(":jvm"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(libs.kotlinx.coroutines.android)
+    testImplementation(libs.kotlinx.coroutines.test)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.io)
     implementation(libs.okhttp)
 }
 

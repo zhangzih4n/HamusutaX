@@ -1,5 +1,5 @@
 @file:Suppress("UNUSED")
-package hamusutax.core.http.okhttp
+package hamusutax.core.okhttp
 
 import kotlinx.serialization.json.Json
 import okhttp3.Response

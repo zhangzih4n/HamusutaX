@@ -1,8 +1,9 @@
 @file:Suppress("UNUSED")
-package hamusutax.core.http.okhttp
+package hamusutax.core.okhttp
 
 import okhttp3.Cookie
 import okhttp3.HttpUrl
+import okhttp3.HttpUrl.Companion.toHttpUrl
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind.EXACTLY_ONCE
 import kotlin.contracts.contract
@@ -25,7 +26,8 @@ fun String.toCookieOrNull(host: String) =
     )
 
 fun String.toCookie(httpUrl: HttpUrl) =
-    toCookieOrNull(httpUrl)!!
+    Cookie.parse(httpUrl, this) ?: throw IllegalStateException()
 
 fun String.toCookieOrNull(httpUrl: HttpUrl) =
     Cookie.parse(httpUrl, this)
+val a = "".toHttpUrl()
