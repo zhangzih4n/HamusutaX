@@ -34,6 +34,10 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "HamusutaX"
-include(":shared")
+include(":core")
 include(":android")
+include(":android-compose")
+include(":compose")
 include(":jvm")
+include(":composeApp")
+include(":okhttp")

@@ -10,17 +10,15 @@ java {
 }
 
 dependencies {
+    api(projects.core)
     implementation(libs.kotlinx.io)
 }
 
 publishing {
-    publications {
-        register<MavenPublication>("mavenJava") {
-            artifactId = "jvm"
-
-            afterEvaluate {
-                from(components["java"])
-            }
+    publications.register<MavenPublication>("mavenJava") {
+        artifactId = "jvm"
+        afterEvaluate {
+            from(components["java"])
         }
     }
 }

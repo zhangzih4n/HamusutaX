@@ -1,9 +1,8 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.kotlinPluginSerialization)
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.jetbrainsCompose)
     id("maven-publish")
 }
 
@@ -15,15 +14,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -34,29 +24,23 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.activity.compose)
+    implementation(compose.ui)
+    implementation(compose.uiTooling)
+    implementation(compose.animation)
+    implementation(compose.animationGraphics)
+    implementation(compose.material3)
     api(projects.core)
     api(projects.jvm)
+    api(projects.compose)
     implementation(libs.kotlinx.coroutines.android)
     testImplementation(libs.kotlinx.coroutines.test)
-    implementation(libs.kotlinx.io)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.okhttp)
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.freeCompilerArgs += listOf(
-        "-opt-in=kotlin.contracts.ExperimentalContracts"
-    )
+    implementation(libs.coil.compose)
 }
 
 publishing {
     publications.register<MavenPublication>("release") {
-        artifactId = "android"
+        artifactId = "android-compose"
         afterEvaluate {
             from(components["release"])
         }
