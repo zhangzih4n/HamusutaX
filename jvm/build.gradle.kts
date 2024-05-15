@@ -15,7 +15,7 @@ dependencies {
 
 publishing {
     publications {
-        withType<MavenPublication> {
+        register<MavenPublication>("mavenJava") {
             artifactId = "jvm"
 
             afterEvaluate {

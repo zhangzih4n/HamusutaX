@@ -60,7 +60,7 @@ tasks.withType<KotlinCompile> {
 
 publishing {
     publications {
-        withType<MavenPublication> {
+        register<MavenPublication>("release") {
             artifactId = "android"
 
             afterEvaluate {
