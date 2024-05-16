@@ -1,5 +1,5 @@
 @file:Suppress("UNUSED")
-package hamusutax.android.http.okhttp.cookiejar
+package hamusutax.android.okhttp.cookiejar
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
@@ -7,7 +7,7 @@ import android.content.SharedPreferences
 import hamusutax.android.sharedpreferences.clear
 import hamusutax.android.sharedpreferences.getStringSetOrNull
 import hamusutax.android.sharedpreferences.putStringSet
-import hamusutax.core.okhttp.toCookie
+import hamusutax.okhttp.toCookie
 import okhttp3.Cookie
 import okhttp3.CookieJar
 import okhttp3.HttpUrl

@@ -49,6 +49,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     api(projects.core)
     api(projects.jvm)
+    api(projects.okhttp)
     implementation(libs.kotlinx.coroutines.android)
     testImplementation(libs.kotlinx.coroutines.test)
     implementation(libs.kotlinx.io)

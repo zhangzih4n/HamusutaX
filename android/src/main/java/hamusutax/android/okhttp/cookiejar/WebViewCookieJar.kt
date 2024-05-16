@@ -1,5 +1,5 @@
 @file:Suppress("UNUSED")
-package hamusutax.android.http.okhttp.cookiejar
+package hamusutax.android.okhttp.cookiejar
 
 import android.webkit.CookieManager
 import okhttp3.Cookie
