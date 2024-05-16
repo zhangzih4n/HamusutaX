@@ -1,13 +1,16 @@
 package hamusutax.core.http.parse
 
-actual fun String.quote() =
-    js("encodeURIComponent(`$this`)") as String
+import hamusutax.js.external.decodeURIComponent
+import hamusutax.js.external.encodeURIComponent
 
-actual fun String.quotePlus() =
-    js("encodeURIComponent(`$this`).replace('%20', '+')") as String
+actual fun String.quote(): String =
+    encodeURIComponent(this)
 
-actual fun String.unquote() =
-    js("decodeURIComponent(`$this`)") as String
+actual fun String.quotePlus(): String =
+    encodeURIComponent(this).replace("%20", "+")
 
-actual fun String.unquotePlus() =
-    js("decodeURIComponent(`$this`.replace('+', '%20'))") as String
+actual fun String.unquote(): String =
+    decodeURIComponent(this)
+
+actual fun String.unquotePlus(): String =
+    decodeURIComponent(this.replace("+", "%20"))
