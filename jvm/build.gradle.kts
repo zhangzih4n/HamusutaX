@@ -10,7 +10,6 @@ java {
 }
 
 dependencies {
-    api(projects.core)
     implementation(libs.kotlinx.io)
 }
 

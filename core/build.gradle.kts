@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -19,12 +20,74 @@ kotlin {
 
     jvm()
 
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs()
+    js {
+        browser {
+            commonWebpackConfig {
+                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
+                    static = (static ?: mutableListOf()).apply {
+                        // Serve sources to debug inside browser
+                        add(project.projectDir.path)
+                    }
+                }
+            }
+        }
+    }
 
-    js()
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser {
+            commonWebpackConfig {
+                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
+                    static = (static ?: mutableListOf()).apply {
+                        // Serve sources to debug inside browser
+                        add(project.projectDir.path)
+                    }
+                }
+            }
+        }
+    }
+
+    /*@OptIn(ExperimentalWasmDsl::class)
+    wasmWasi {
+        nodejs()
+    }*/
+
+    mingwX64()
+
+    linuxX64()
+
+    linuxArm64()
+
+    macosX64()
+
+    macosArm64()
+
+    iosX64()
+
+    iosArm64()
+
+    iosSimulatorArm64()
+
+    watchosX64()
+
+    watchosArm32()
+
+    watchosArm64()
+
+    watchosSimulatorArm64()
+
+    watchosDeviceArm64()
+
+    tvosX64()
+
+    tvosArm64()
+
+    tvosSimulatorArm64()
 
     sourceSets {
+        val mingwX64Main by getting
+        val wasmJsMain by getting
+
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines)
             implementation(libs.kotlinx.collections.immutable)

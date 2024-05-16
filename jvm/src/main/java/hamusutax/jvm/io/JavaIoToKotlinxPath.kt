@@ -1,5 +1,5 @@
 @file:Suppress("UNUSED")
-package hamusutax.core.io
+package hamusutax.jvm.io
 
 import kotlinx.io.buffered
 import kotlinx.io.files.Path

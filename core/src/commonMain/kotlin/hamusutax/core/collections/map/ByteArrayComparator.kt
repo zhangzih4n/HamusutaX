@@ -9,6 +9,3 @@ val ByteArrayComparator = Comparator<ByteArray> { a, b ->
     }
     return@Comparator a.size compareTo b.size
 }
-
-fun <T> Map<ByteArray, T>.toSortedMap() =
-    toSortedMap(ByteArrayComparator)

@@ -1,21 +1,16 @@
 package hamusutax.core.http.parse
 
-@Deprecated(message = "TODO", level = DeprecationLevel.ERROR)
-actual fun String.quote(): String {
-    TODO("Not yet implemented")
-}
+import hamusutax.wasmjs.external.decodeURIComponent
+import hamusutax.wasmjs.external.encodeURIComponent
 
-@Deprecated(message = "TODO", level = DeprecationLevel.ERROR)
-actual fun String.quotePlus(): String {
-    TODO("Not yet implemented")
-}
+actual fun String.quote(): String =
+    encodeURIComponent(this)
 
-@Deprecated(message = "TODO", level = DeprecationLevel.ERROR)
-actual fun String.unquote(): String {
-    TODO("Not yet implemented")
-}
+actual fun String.quotePlus(): String =
+    encodeURIComponent(this).replace("%20", "+")
 
-@Deprecated(message = "TODO", level = DeprecationLevel.ERROR)
-actual fun String.unquotePlus(): String {
-    TODO("Not yet implemented")
-}
+actual fun String.unquote(): String =
+    decodeURIComponent(this)
+
+actual fun String.unquotePlus(): String =
+    decodeURIComponent(replace("+", "%20"))

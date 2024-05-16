@@ -1,6 +1,8 @@
 @file:Suppress("UNUSED")
 package hamusutax.core.number
 
+import kotlin.jvm.JvmName
+
 @JvmName("medianOfInt")
 fun List<Int>.median() =
     map { it.toLong() }.median()

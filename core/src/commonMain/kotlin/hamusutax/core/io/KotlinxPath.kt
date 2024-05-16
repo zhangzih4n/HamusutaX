@@ -7,8 +7,6 @@ import kotlinx.io.files.FileSystem
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
 import kotlinx.io.files.SystemPathSeparator
-import kotlin.io.path.ExperimentalPathApi
-import kotlin.io.path.PathWalkOption
 
 fun Path.resolve() =
     SystemFileSystem.resolve(this)
@@ -29,7 +27,7 @@ fun Path.delete(mustExist: Boolean = true) =
     SystemFileSystem.delete(this, mustExist)
 
 fun FileSystem.deleteRecursively(path: Path, mustExist: Boolean = true) {
-    if (mustExist && !path.exists()) throw FileNotFoundException()
+    if (mustExist && !path.exists()) throw FileNotFoundException("$path")
 
     val queue = mutableListOf(path)
     while (queue.isNotEmpty()) {
@@ -116,7 +114,6 @@ fun Path.writeLines(lines: Sequence<CharSequence>) {
 /**
  * 当前参数只支持 [PathWalkOption.BREADTH_FIRST]
  */
-@OptIn(ExperimentalPathApi::class)
 fun FileSystem.walk(path: Path, vararg options: PathWalkOption): Sequence<Path> = sequence {
     if (PathWalkOption.BREADTH_FIRST in options) {
         // 广度优先
@@ -145,6 +142,9 @@ fun FileSystem.walk(path: Path, vararg options: PathWalkOption): Sequence<Path> 
     }
 }
 
-@OptIn(ExperimentalPathApi::class)
 fun Path.walk(vararg options: PathWalkOption) =
     SystemFileSystem.walk(this, *options)
+
+enum class PathWalkOption {
+    BREADTH_FIRST
+}

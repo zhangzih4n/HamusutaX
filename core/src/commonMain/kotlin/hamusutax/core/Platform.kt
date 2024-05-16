@@ -4,4 +4,4 @@ interface Platform {
     val name: String
 }
 
-expect fun getPlatform(): hamusutax.core.Platform
+expect fun getPlatform(): Platform

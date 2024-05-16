@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -20,9 +21,18 @@ kotlin {
     jvm()
 
     @OptIn(ExperimentalWasmDsl::class)
-    wasmJs()
-
-    js()
+    wasmJs {
+        browser {
+            commonWebpackConfig {
+                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
+                    static = (static ?: mutableListOf()).apply {
+                        // Serve sources to debug inside browser
+                        add(project.projectDir.path)
+                    }
+                }
+            }
+        }
+    }
 
     sourceSets {
         commonMain.dependencies {

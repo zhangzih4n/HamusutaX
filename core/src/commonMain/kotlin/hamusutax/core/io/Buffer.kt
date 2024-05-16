@@ -2,6 +2,7 @@
 package hamusutax.core.io
 
 import kotlinx.io.Buffer
+import kotlin.jvm.JvmName
 
 @JvmName("byteArrayToBuffer")
 fun ByteArray.toBuffer() =
