@@ -26,7 +26,8 @@ class SharedPreferencesCookieJar(
 
     override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {
         sharedPref.putStringSet(
-            url.host, ((sharedPref.getStringSetOrNull(url.host) ?: emptyList()).map { it.toCookie(url) } + cookies)
+            url.host, ((sharedPref.getStringSetOrNull(url.host) ?: emptyList())
+                .map { Cookie.parse(url, it) ?: throw IllegalStateException("Cookie parsing error from SharedPreferences") } + cookies)
                 .filter { it.expiresAt > System.currentTimeMillis() }
                 .reversed() // 两次翻转以保留靠后的 Cookies
                 .distinctBy { Triple(it.domain, it.name, it.path) }

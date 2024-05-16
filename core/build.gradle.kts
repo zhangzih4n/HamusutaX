@@ -97,7 +97,10 @@ kotlin {
             implementation(libs.okio)
         }
         androidMain.dependencies {
+            implementation(libs.androidx.core.ktx)
+            implementation(libs.androidx.lifecycle.runtime.ktx)
             implementation(libs.kotlinx.coroutines.android)
+            implementation(libs.okhttp)
         }
     }
 }

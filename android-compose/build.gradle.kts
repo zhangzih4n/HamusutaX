@@ -56,7 +56,6 @@ dependencies {
     implementation(compose.animationGraphics)
     implementation(compose.material3)
     api(projects.core)
-    api(projects.jvm)
     api(projects.compose)
     implementation(libs.kotlinx.coroutines.android)
     testImplementation(libs.kotlinx.coroutines.test)
