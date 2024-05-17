@@ -85,6 +85,13 @@ kotlin {
     tvosSimulatorArm64()
 
     sourceSets {
+        all {
+            languageSettings.apply {
+                optIn("kotlin.ExperimentalStdlibApi")
+                optIn("kotlin.contracts.ExperimentalContracts")
+            }
+        }
+
         val mingwX64Main by getting
         val wasmJsMain by getting
 

@@ -4,11 +4,9 @@ package hamusutax.okhttp
 import okhttp3.Cookie
 import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrl
-import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind.EXACTLY_ONCE
 import kotlin.contracts.contract
 
-@OptIn(ExperimentalContracts::class)
 inline fun buildCookie(builderAction: Cookie.Builder.() -> Unit): Cookie {
     contract { callsInPlace(builderAction, EXACTLY_ONCE) }
     return Cookie.Builder().apply(builderAction).build()

@@ -17,6 +17,12 @@ kotlin {
     jvm()
 
     sourceSets {
+        all {
+            languageSettings.apply {
+                optIn("kotlin.contracts.ExperimentalContracts")
+            }
+        }
+
         commonMain.dependencies {
             api(projects.core)
             implementation(libs.kotlinx.coroutines)

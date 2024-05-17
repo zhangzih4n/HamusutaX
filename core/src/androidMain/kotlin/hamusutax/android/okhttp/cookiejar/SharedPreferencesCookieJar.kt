@@ -7,7 +7,6 @@ import android.content.SharedPreferences
 import hamusutax.android.sharedpreferences.clear
 import hamusutax.android.sharedpreferences.getStringSetOrNull
 import hamusutax.android.sharedpreferences.putStringSet
-import hamusutax.okhttp.toCookie
 import okhttp3.Cookie
 import okhttp3.CookieJar
 import okhttp3.HttpUrl
@@ -21,7 +20,7 @@ class SharedPreferencesCookieJar(
 
     override fun loadForRequest(url: HttpUrl) =
         (sharedPref.getStringSetOrNull(url.host) ?: emptyList())
-            .map { it.toCookie(url) }
+            .map { Cookie.parse(url, it) ?: throw IllegalStateException("Cookie parsing error from SharedPreferences") }
             .filter { it.expiresAt > System.currentTimeMillis() && it.matches(url) }
 
     override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {

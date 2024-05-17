@@ -35,6 +35,12 @@ kotlin {
     }
 
     sourceSets {
+        all {
+            languageSettings.apply {
+                optIn("androidx.compose.foundation.ExperimentalFoundationApi")
+            }
+        }
+
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.animation)

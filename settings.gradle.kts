@@ -37,4 +37,3 @@ rootProject.name = "HamusutaX"
 include(":core")
 include(":compose")
 include(":okhttp")
-include(":android-compose")

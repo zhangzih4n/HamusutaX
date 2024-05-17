@@ -110,6 +110,5 @@ fun log2ToInt(n: Int) =
 /**
  * 快速计算 log_2 ([n])，此函数不会验证 [n] 是否为 2 的整数次幂
  */
-@OptIn(ExperimentalStdlibApi::class)
 fun log2ToInt(n: Long) =
     63 - n.countLeadingZeroBits()

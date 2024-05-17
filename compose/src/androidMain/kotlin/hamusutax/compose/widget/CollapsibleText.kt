@@ -1,5 +1,5 @@
 @file:Suppress("UNUSED")
-package hamusutax.android.compose.widget
+package hamusutax.compose.widget
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.graphics.ExperimentalAnimationGraphicsApi
@@ -24,7 +24,7 @@ import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
-import hamusutax.android.R
+import hamusutax.compose.R
 import hamusutax.compose.modifier.clickableNoIndication
 import kotlin.math.roundToInt
 
