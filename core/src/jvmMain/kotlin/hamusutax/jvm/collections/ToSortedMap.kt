@@ -1,3 +1,4 @@
+@file:Suppress("UNUSED")
 package hamusutax.jvm.collections
 
 import hamusutax.core.collections.map.ByteArrayComparator

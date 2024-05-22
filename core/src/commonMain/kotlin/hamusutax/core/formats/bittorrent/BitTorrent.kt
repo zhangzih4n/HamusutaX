@@ -4,10 +4,10 @@ package hamusutax.core.formats.bittorrent
 import hamusutax.core.collections.bytearray.toByteArray
 import hamusutax.core.hash.sha1
 import hamusutax.core.hash.sha256
-import hamusutax.core.io.isEmpty
 import hamusutax.core.io.readAtMostTo
+import hamusutax.core.io.isEmpty
 import hamusutax.core.io.request
-import hamusutax.core.number.nextPowerOf
+import hamusutax.core.math.nextPowerOf
 import kotlinx.io.Buffer
 import kotlinx.io.Source
 import kotlinx.io.readByteArray

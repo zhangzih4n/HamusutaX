@@ -2,8 +2,8 @@
 package hamusutax.core.formats.bittorrent
 
 import hamusutax.core.hash.sha256
-import hamusutax.core.number.isPowerOf
-import hamusutax.core.number.nextPowerOf
+import hamusutax.core.math.isPowerOf
+import hamusutax.core.math.nextPowerOf
 
 /**
  * 计算 [BitTorrent V2](http://www.bittorrent.org/beps/bep_0003.html) Piece 列表的 PiecesRoot

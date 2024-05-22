@@ -55,33 +55,23 @@ kotlin {
     mingwX64()
 
     linuxX64()
-
     linuxArm64()
 
-    macosX64()
-
-    macosArm64()
-
     iosX64()
-
     iosArm64()
-
     iosSimulatorArm64()
 
+    macosX64()
+    macosArm64()
+
     watchosX64()
-
     watchosArm32()
-
     watchosArm64()
-
     watchosSimulatorArm64()
-
     watchosDeviceArm64()
 
     tvosX64()
-
     tvosArm64()
-
     tvosSimulatorArm64()
 
     sourceSets {
@@ -89,6 +79,7 @@ kotlin {
             languageSettings.apply {
                 optIn("kotlin.ExperimentalStdlibApi")
                 optIn("kotlin.contracts.ExperimentalContracts")
+                optIn("kotlinx.serialization.ExperimentalSerializationApi")
             }
         }
 
@@ -96,18 +87,19 @@ kotlin {
         val wasmJsMain by getting
 
         commonMain.dependencies {
-            implementation(libs.kotlinx.coroutines)
-            implementation(libs.kotlinx.collections.immutable)
-            implementation(libs.kotlinx.datetime)
-            implementation(libs.kotlinx.io)
-            implementation(libs.kotlinx.serialization.json)
-            implementation(libs.okio)
+            api(libs.kotlinx.coroutines)
+            api(libs.kotlinx.collections.immutable)
+            api(libs.kotlinx.datetime)
+            api(libs.kotlinx.io)
+            api(libs.kotlinx.io.bytestring)
+            api(libs.kotlinx.serialization.json)
+            api(libs.okio)
         }
         androidMain.dependencies {
             implementation(libs.androidx.core.ktx)
             implementation(libs.androidx.lifecycle.runtime.ktx)
-            implementation(libs.kotlinx.coroutines.android)
-            implementation(libs.okhttp)
+            api(libs.kotlinx.coroutines.android)
+            api(libs.okhttp)
         }
     }
 }

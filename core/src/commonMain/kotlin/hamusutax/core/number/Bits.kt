@@ -1,12 +1,32 @@
+@file:Suppress("UNUSED")
 package hamusutax.core.number
 
-expect fun Long.bitsToDouble(): Double
+import kotlin.experimental.and
+import kotlin.experimental.inv
 
+expect fun Long.bitsToDouble(): Double
 expect fun Double.toLongBits(): Long
 
 /**
- * 返回整数的二进制补码表示，长度固定 32 个字符
- *
- * 当整数为正数时，等效于 Int.toString(2)
+ * 将二进制最高位 1 设置为 0。如果不存在最高位 1，则返回零
  */
-expect fun Int.toBinaryString(trimStart: Boolean = false): String
+fun Byte.clearHighestOneBit(): Byte =
+    this and takeHighestOneBit().inv()
+
+/**
+ * 将二进制最高位 1 设置为 0。如果不存在最高位 1，则返回零
+ */
+fun Short.clearHighestOneBit(): Short =
+    this and takeHighestOneBit().inv()
+
+/**
+ * 将二进制最高位 1 设置为 0。如果不存在最高位 1，则返回零
+ */
+fun Int.clearHighestOneBit(): Int =
+    this and takeHighestOneBit().inv()
+
+/**
+ * 将二进制最高位 1 设置为 0。如果不存在最高位 1，则返回零
+ */
+fun Long.clearHighestOneBit(): Long =
+    this and takeHighestOneBit().inv()

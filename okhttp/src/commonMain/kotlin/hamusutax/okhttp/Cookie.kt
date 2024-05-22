@@ -28,4 +28,3 @@ fun String.toCookie(httpUrl: HttpUrl) =
 
 fun String.toCookieOrNull(httpUrl: HttpUrl) =
     Cookie.parse(httpUrl, this)
-val a = "".toHttpUrl()

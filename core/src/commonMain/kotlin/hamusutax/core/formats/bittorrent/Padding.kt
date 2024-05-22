@@ -1,7 +1,7 @@
 @file:Suppress("UNUSED")
 package hamusutax.core.formats.bittorrent
 
-import hamusutax.core.number.isPowerOf
+import hamusutax.core.math.isPowerOf
 
 internal class Padding {
     companion object {
