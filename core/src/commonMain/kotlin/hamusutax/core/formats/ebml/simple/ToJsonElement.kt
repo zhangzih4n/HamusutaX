@@ -10,9 +10,9 @@ import hamusutax.core.formats.ebml.EbmlElementType.SIGNED_INTEGER
 import hamusutax.core.formats.ebml.EbmlElementType.UNICODE_STRING
 import hamusutax.core.formats.ebml.EbmlElementType.UNSIGNED_INTEGER
 import hamusutax.core.formats.ebml.define.defineMap
-import hamusutax.core.io.readLongAtLeastOne
-import hamusutax.core.io.readULongAtLeastOne
-import hamusutax.core.io.toBuffer
+import hamusutax.core.io.buffer.readLongAtLeastOne
+import hamusutax.core.io.buffer.readULongAtLeastOne
+import hamusutax.core.io.buffer.toBuffer
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
@@ -76,21 +76,7 @@ fun EbmlDecoder.toJsonElement(parser: Json = Json): JsonElement =
                     val second = nanosecond / 1000_000_000
                     val nanosecondAdjustment = nanosecond % 1000_000_000
                     val datetime = Instant.fromEpochSeconds(978307200 + second, nanosecondAdjustment).toLocalDateTime(TimeZone.UTC)
-                    val datetimeFormat = LocalDateTime.Format {
-                        year()
-                        char('-')
-                        monthNumber()
-                        char('-')
-                        dayOfMonth()
-                        char('T')
-                        hour()
-                        char(':')
-                        minute()
-                        char(':')
-                        second()
-                        char('.')
-                    }
-                    JsonPrimitive(datetimeFormat.format(datetime) + datetime.nanosecond.toString().padStart(9, '0'))
+                    JsonPrimitive(datetimeFormat.format(datetime))
                 }
                 BINARY -> {
                     val contentString = if (content.size > 32) {
@@ -106,3 +92,19 @@ fun EbmlDecoder.toJsonElement(parser: Json = Json): JsonElement =
             put(name, jsonElement)
         }
     }
+
+private val datetimeFormat = LocalDateTime.Format {
+    year()
+    char('-')
+    monthNumber()
+    char('-')
+    dayOfMonth()
+    char('T')
+    hour()
+    char(':')
+    minute()
+    char(':')
+    second()
+    char('.')
+    secondFraction(9)
+}

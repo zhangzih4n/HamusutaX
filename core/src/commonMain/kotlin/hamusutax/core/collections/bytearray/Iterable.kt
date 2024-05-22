@@ -1,6 +1,7 @@
+@file:Suppress("UNUSED")
 package hamusutax.core.collections.bytearray
 
-import hamusutax.core.io.toBuffer
+import hamusutax.core.io.buffer.toBuffer
 import kotlinx.io.readByteArray
 import kotlinx.io.readByteString
 

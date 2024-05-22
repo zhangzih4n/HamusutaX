@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
@@ -19,6 +20,28 @@ kotlin {
     }
 
     jvm()
+
+    @OptIn(ExperimentalKotlinGradlePluginApi::class)
+    applyDefaultHierarchyTemplate {
+        common {
+            group("jvmAndAndroid") {
+                withJvm()
+                withAndroidTarget()
+            }
+
+            group("jsAndWasmJs") {
+                withJs()
+                withWasm()
+            }
+
+            group("native") {
+                group("unix") {
+                    group("apple")
+                    group("linux")
+                }
+            }
+        }
+    }
 
     js {
         browser {
@@ -47,29 +70,19 @@ kotlin {
         }
     }
 
-    /*@OptIn(ExperimentalWasmDsl::class)
-    wasmWasi {
-        nodejs()
-    }*/
-
     mingwX64()
-
     linuxX64()
     linuxArm64()
-
+    macosX64()
+    macosArm64()
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-
-    macosX64()
-    macosArm64()
-
     watchosX64()
     watchosArm32()
     watchosArm64()
     watchosSimulatorArm64()
     watchosDeviceArm64()
-
     tvosX64()
     tvosArm64()
     tvosSimulatorArm64()

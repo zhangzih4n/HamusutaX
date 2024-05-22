@@ -1,8 +1,8 @@
 @file:Suppress("UNUSED")
 package hamusutax.core.formats.ebml.simple
 
-import hamusutax.core.io.readAtMost
-import hamusutax.core.io.readLongAtLeastOne
+import hamusutax.core.io.source.readAtMost
+import hamusutax.core.io.buffer.readLongAtLeastOne
 import hamusutax.core.number.clearHighestOneBit
 import kotlinx.io.Buffer
 import kotlinx.io.EOFException
