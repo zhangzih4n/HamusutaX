@@ -16,7 +16,7 @@ kotlin {
                 jvmTarget = "17"
             }
         }
-        //publishLibraryVariants("release", "debug")
+        publishLibraryVariants("release", "debug")
     }
 
     jvm()
@@ -127,4 +127,11 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
+}
+
+dependencies {
+    // For KTS Documentation
+    testImplementation(libs.android.gradle)
+    testImplementation(libs.kotlin.gradle.plugin)
+    testImplementation(libs.kotlin.gradle.plugin.api)
 }
