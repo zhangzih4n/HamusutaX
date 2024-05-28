@@ -3,5 +3,4 @@ package hamusutax.jvm.io.file
 
 import java.io.File
 
-val kotlinx.io.files.Path.javaFile: File
-    get() = File(toString())
+fun kotlinx.io.files.Path.toJavaFile() = File(toString())

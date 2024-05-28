@@ -1,7 +1,7 @@
 @file:Suppress("UNUSED")
 package hamusutax.core.formats.bittorrent
 
-import hamusutax.core.hash.sha256
+import hamusutax.core.io.hash.sha256
 import hamusutax.core.math.isPowerOf
 import hamusutax.core.math.nextPowerOf
 

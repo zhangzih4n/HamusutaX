@@ -1,8 +1,7 @@
 @file:Suppress("UNUSED")
 package hamusutax.jvm.io.path
 
-import hamusutax.jvm.io.file.javaFile
+import hamusutax.jvm.io.file.toJavaFile
 import java.nio.file.Path
 
-val kotlinx.io.files.Path.javaPath: Path
-    get() = javaFile.toPath()
+fun kotlinx.io.files.Path.toJavaPath(): Path = toJavaFile().toPath()

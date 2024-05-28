@@ -11,13 +11,13 @@ fun Path.rawSource() =
     SystemFileSystem.source(kotlinx.io.files.Path(pathString))
 
 fun Path.rawSink() =
-    SystemFileSystem.source(kotlinx.io.files.Path(pathString))
+    SystemFileSystem.sink(kotlinx.io.files.Path(pathString))
 
 fun Path.source() =
     SystemFileSystem.source(kotlinx.io.files.Path(pathString)).buffered()
 
 fun Path.sink() =
-    SystemFileSystem.source(kotlinx.io.files.Path(pathString)).buffered()
+    SystemFileSystem.sink(kotlinx.io.files.Path(pathString)).buffered()
 
 fun Path.readFirstLine(): String =
     bufferedReader().readLine()

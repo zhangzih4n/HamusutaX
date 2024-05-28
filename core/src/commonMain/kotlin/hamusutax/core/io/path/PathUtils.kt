@@ -8,6 +8,8 @@ import kotlinx.io.files.FileSystem
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
 import kotlinx.io.files.SystemPathSeparator
+import kotlinx.io.readByteArray
+import kotlinx.io.readString
 
 fun Path.resolve() =
     SystemFileSystem.resolve(this)
@@ -76,41 +78,34 @@ fun Path.source() =
 fun Path.sink() =
     rawSink().buffered()
 
-operator fun Path.div(other: Path) =
-    Path("$this$SystemPathSeparator$other")
-
-operator fun Path.div(other: String) =
-    Path("$this$SystemPathSeparator$other")
-
-operator fun String.div(other: Path) =
-    Path("$this$SystemPathSeparator$other")
-
-fun Path.writeBytes(array: ByteArray) {
-    val buffer = rawSink().buffered()
-    buffer.write(array)
-    buffer.flush()
+fun Path.writeByteArray(array: ByteArray) {
+    sink().apply {
+        write(array)
+        flush()
+    }
 }
 
 fun Path.writeText(text: CharSequence) =
-    writeBytes(text.toString().encodeToByteArray())
+    writeByteArray(text.toString().encodeToByteArray())
 
 fun Path.writeLines(lines: Iterable<CharSequence>) {
-    val buffer = rawSink().buffered()
-    lines.forEach { line ->
-        buffer.write(line.toString().encodeToByteArray())
-        buffer.writeByte('\n'.code.toByte())
+    sink().apply {
+        lines.forEach { line ->
+            write(line.toString().encodeToByteArray())
+            writeByte('\n'.code.toByte())
+        }
+        flush()
     }
-    buffer.flush()
 }
 
-fun Path.writeLines(lines: Sequence<CharSequence>) {
-    val buffer = rawSink().buffered()
-    lines.forEach { line ->
-        buffer.write(line.toString().encodeToByteArray())
-        buffer.writeByte('\n'.code.toByte())
-    }
-    buffer.flush()
-}
+fun Path.writeLines(lines: Sequence<CharSequence>) =
+    writeLines(lines.asIterable())
+
+fun Path.readByteArray() =
+    source().readByteArray()
+
+fun Path.readText() =
+    source().readString()
 
 /**
  * 当前参数只支持 [PathWalkOption.BREADTH_FIRST]
@@ -149,3 +144,9 @@ fun Path.walk(vararg options: PathWalkOption) =
 enum class PathWalkOption {
     BREADTH_FIRST
 }
+
+val Path.nameWithoutExtension
+    get() = if ('.' !in name) name else name.substringBeforeLast('.')
+
+val Path.extension
+    get() = if ('.' !in name) "" else name.substringAfterLast('.')

@@ -1,14 +1,13 @@
 [versions]
 agp = "8.4.1"
 android-compileSdk = "34"
-android-minSdk = "28"
+android-minSdk = "1"
 android-targetSdk = "34"
-composeApp-applicationId = "hamusutax.composeapp"
-kotlin = "1.9.24"
+kotlin = "2.0.0"
 compose = "1.6.7"
 compose-compiler = "1.5.14"
-compose-material3 = "1.2.1"
-compose-plugin = "1.6.10-rc03"
+compose-material3 = "1.3.0-beta01"
+compose-plugin = "1.6.10"
 junit = "4.13.2"
 androidx-junit = "1.1.5"
 androidx-espressoCore = "3.5.1"
@@ -19,22 +18,30 @@ androidx-room = "2.6.1"
 androidx-paging = "3.3.0"
 androidx-datastore = "1.1.1"
 coroutines = "1.8.1"
+benchmark = "0.4.10"
 collectionsImmutable = "0.3.7"
 datetime = "0.6.0"
 io = "0.3.4"
 serialization = "1.6.3"
-ksp = "1.9.23-1.0.20"
+ktor = "2.3.11"
+ksp = "2.0.0-1.0.21"
 accompanist = "0.34.0"
 coilCompose = "2.6.0"
 okio = "3.9.0"
-okhttp = "5.0.0-alpha.12"
-ksoup = "0.1.2"
-kaml = "0.59.0"
-xmlutil = "0.86.3"
-sardine = "5.12"
-bouncycastle = "1.78"
+okhttp = "5.0.0-alpha.14"
 koin = "3.5.3"
 koinKsp = "1.3.1"
+xmlutil = "0.86.3"
+kaml = "0.59.0"
+sardine = "5.12"
+bouncycastle = "1.78"
+ksoup = "0.1.2"
+jsoup = "1.17.2"
+jsonpath = "2.8.0"
+jsoupxpath = "2.5.3"
+logback = "1.5.6"
+mlkitVision = "17.3.0"
+mlkitTextRecognition = "16.0.0"
 
 [libraries]
 # AndroidX
@@ -66,12 +73,12 @@ coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coi
 
 # Kotlin & KotlinX
 kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
-kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
 kotlinx-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "collectionsImmutable" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "datetime" }
-kotlinx-io = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-core", version.ref = "io" }
+kotlinx-io-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-core", version.ref = "io" }
 kotlinx-io-bytestring = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-bytestring", version.ref = "io" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
 kotlinx-serialization-json-okio = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json-okio", version.ref = "serialization" }
@@ -87,19 +94,36 @@ accompanist-drawablepainter = { group = "com.google.accompanist", name = "accomp
 accompanist-adaptive = { group = "com.google.accompanist", name = "accompanist-adaptive", version.ref = "accompanist" }
 accompanist-testharness = { group = "com.google.accompanist", name = "accompanist-testharness", version.ref = "accompanist" }
 
-# Okio
+# IO
 okio = { group = "com.squareup.okio", name = "okio", version.ref = "okio" }
 okio-nodefilesystem = { group = "com.squareup.okio", name = "okio-nodefilesystem", version.ref = "okio" }
 okio-fakefilesystem = { group = "com.squareup.okio", name = "okio-fakefilesystem", version.ref = "okio" }
 
-# OkHttp
+# Log
+logback-classic = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }
+
+# HTTP Server & Client
+ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-client-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
+ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" } # For Android
+ktor-client-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" } # For iOS
+ktor-client-websockets = { group = "io.ktor", name = "ktor-client-websockets", version.ref = "ktor" }
+ktor-client-encoding = { group = "io.ktor", name = "ktor-client-encoding", version.ref = "ktor" }
+ktor-client-auth = { group = "io.ktor", name = "ktor-client-auth", version.ref = "ktor" }
+ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
+ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-serialization-kotlinx-xml = { group = "io.ktor", name = "ktor-serialization-kotlinx-xml", version.ref = "ktor" }
+ktor-serialization-kotlinx-cbor = { group = "io.ktor", name = "ktor-serialization-kotlinx-cbor", version.ref = "ktor" }
+ktor-serialization-kotlinx-protobuf = { group = "io.ktor", name = "ktor-serialization-kotlinx-protobuf", version.ref = "ktor" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 okhttp-urlconnection = { group = "com.squareup.okhttp3", name = "okhttp-urlconnection", version.ref = "okhttp" }
 okhttp-dnsoverhttps = { group = "com.squareup.okhttp3", name = "okhttp-dnsoverhttps", version.ref = "okhttp" }
 okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+okhttp-mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okhttp" }
 
-# Koin
-koin = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+# Dependency Injection
+koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
 koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
 koin-androidx-compose-navigation = { group = "io.insert-koin", name = "koin-androidx-compose-navigation", version.ref = "koin" }
@@ -107,17 +131,30 @@ koin-compiler = { group = "io.insert-koin", name = "koin-ksp-compiler", version.
 koin-android-test = { group = "io.insert-koin", name = "koin-android-test", version.ref = "koin" }
 
 # BouncyCastle
-bcprov = { group = "org.bouncycastle", name = "bcprov-jdk15to18", version.ref = "bouncycastle" }
-bctls = { group = "org.bouncycastle", name = "bctls-jdk15to18", version.ref = "bouncycastle" }
-bcpkix = { group = "org.bouncycastle", name = "bcpkix-jdk15to18", version.ref = "bouncycastle" }
-bcpg = { group = "org.bouncycastle", name = "bcpg-jdk15to18", version.ref = "bouncycastle" }
-bcmail = { group = "org.bouncycastle", name = "bcmail-jdk15to18", version.ref = "bouncycastle" }
-bcutil = { group = "org.bouncycastle", name = "bcutil-jdk15to18", version.ref = "bouncycastle" }
+bcprov = { group = "org.bouncycastle", name = "bcprov-jdk18on", version.ref = "bouncycastle" }
+bctls = { group = "org.bouncycastle", name = "bctls-jdk18on", version.ref = "bouncycastle" }
+bcpkix = { group = "org.bouncycastle", name = "bcpkix-jdk18on", version.ref = "bouncycastle" }
+bcpg = { group = "org.bouncycastle", name = "bcpg-jdk18on", version.ref = "bouncycastle" }
+bcmail = { group = "org.bouncycastle", name = "bcmail-jdk18on", version.ref = "bouncycastle" }
+bcutil = { group = "org.bouncycastle", name = "bcutil-jdk18on", version.ref = "bouncycastle" }
+
 
 sardine = { group = "com.github.lookfirst", name = "sardine", version.ref = "sardine" } # WebDAV Client
 ksoup = { group = "com.fleeksoft.ksoup", name = "ksoup", version.ref = "ksoup" } # HTML Parser
 kaml = { group = "com.charleskorn.kaml", name = "kaml", version.ref = "kaml" } # YAML Serialization
 xmlutil = { group = "io.github.pdvrieze.xmlutil", name = "serialization-android", version.ref = "xmlutil" } # XML Serialization
+jsoup = { group = "org.jsoup", name = "jsoup", version.ref = "jsoup" } # JVM HTML Parser
+jsonpath = { group = "com.jayway.jsonpath", name = "json-path", version.ref = "jsonpath" } # JVM HTML Parser
+jsoupxpath = { group = "cn.wanghaomiao", name = "JsoupXpath", version.ref = "jsoupxpath" } # JVM HTML Parser
+
+# Google ML Kit
+# https://developers.google.com/ml-kit/vision/text-recognition/v2/android
+mlkit-vision-common = { group = "com.google.mlkit", name = "vision-common", version.ref = "mlkitVision" }
+mlkit-text-recognition = { group = "com.google.mlkit", name = "text-recognition", version.ref = "mlkitTextRecognition" }
+mlkit-text-recognition-chinese = { group = "com.google.mlkit", name = "text-recognition-chinese", version.ref = "mlkitTextRecognition" }
+mlkit-text-recognition-japanese = { group = "com.google.mlkit", name = "text-recognition-japanese", version.ref = "mlkitTextRecognition" }
+mlkit-text-recognition-korean = { group = "com.google.mlkit", name = "text-recognition-korean", version.ref = "mlkitTextRecognition" }
+mlkit-text-recognition-devanagari = { group = "com.google.mlkit", name = "text-recognition-devanagari", version.ref = "mlkitTextRecognition" }
 
 # For KTS Documentation
 kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -130,7 +167,10 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+kotlinPluginSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlinPluginCompose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinPluginAllopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
+kotlinxBenchmark = { id = "org.jetbrains.kotlinx.benchmark", version.ref = "benchmark" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

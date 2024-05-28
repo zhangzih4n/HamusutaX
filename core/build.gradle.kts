@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
@@ -11,10 +12,9 @@ plugins {
 
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_17)
         }
         publishLibraryVariants("release", "debug")
     }
@@ -29,15 +29,17 @@ kotlin {
                 withAndroidTarget()
             }
 
-            group("jsAndWasmJs") {
-                withJs()
-                withWasm()
-            }
+            group("nonJvm") {
+                group("jsAndWasmJs") {
+                    withJs()
+                    withWasmJs()
+                }
 
-            group("native") {
-                group("unix") {
-                    group("apple")
-                    group("linux")
+                group("native") {
+                    group("unix") {
+                        group("apple")
+                        group("linux")
+                    }
                 }
             }
         }
@@ -92,28 +94,56 @@ kotlin {
             languageSettings.apply {
                 optIn("kotlin.ExperimentalStdlibApi")
                 optIn("kotlin.contracts.ExperimentalContracts")
+                optIn("kotlin.io.encoding.ExperimentalEncodingApi")
+                optIn("kotlinx.datetime.format.FormatStringsInDatetimeFormats")
                 optIn("kotlinx.serialization.ExperimentalSerializationApi")
             }
         }
 
-        val mingwX64Main by getting
+        val jvmAndAndroidMain by getting
+        val nonJvmMain by getting
+        val jsAndWasmJsMain by getting
         val wasmJsMain by getting
 
         commonMain.dependencies {
-            api(libs.kotlinx.coroutines)
-            api(libs.kotlinx.collections.immutable)
-            api(libs.kotlinx.datetime)
-            api(libs.kotlinx.io)
-            api(libs.kotlinx.io.bytestring)
-            api(libs.kotlinx.serialization.json)
-            api(libs.okio)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.collections.immutable)
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.kotlinx.io.core)
+            implementation(libs.kotlinx.io.bytestring)
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.okio)
         }
+
         androidMain.dependencies {
             implementation(libs.androidx.core.ktx)
             implementation(libs.androidx.lifecycle.runtime.ktx)
-            api(libs.kotlinx.coroutines.android)
-            api(libs.okhttp)
+            implementation(libs.kotlinx.coroutines.android)
         }
+
+        jvmAndAndroidMain.dependencies {
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.cio)
+            implementation(libs.ktor.client.auth)
+            implementation(libs.ktor.client.encoding)
+            implementation(libs.ktor.client.websockets)
+            implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.okhttp)
+            implementation(libs.jsoup)
+        }
+
+        jvmMain.dependencies {}
+        jsMain.dependencies {}
+        nativeMain.dependencies {}
+        appleMain.dependencies {}
+        iosMain.dependencies {}
+        macosMain.dependencies {}
+        tvosMain.dependencies {}
+        watchosMain.dependencies {}
+        linuxMain.dependencies {}
+        mingwMain.dependencies {}
     }
 }
 
@@ -130,6 +160,8 @@ android {
 }
 
 dependencies {
+    testImplementation(libs.okhttp.mockwebserver)
+
     // For KTS Documentation
     testImplementation(libs.android.gradle)
     testImplementation(libs.kotlin.gradle.plugin)

@@ -5,7 +5,8 @@ import kotlin.experimental.and
 import kotlin.experimental.inv
 
 expect fun Long.bitsToDouble(): Double
-expect fun Double.toLongBits(): Long
+
+expect fun Double.bitsToLong(): Long
 
 /**
  * 将二进制最高位 1 设置为 0。如果不存在最高位 1，则返回零
