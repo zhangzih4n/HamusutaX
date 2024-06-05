@@ -1,8 +1,8 @@
 @file:Suppress("UNUSED")
 package hamusutax.core.datetime
 
-actual fun currentTimeMilliseconds() =
+actual fun getTimeMillis() =
     System.currentTimeMillis()
 
-actual fun currentTimeSeconds() =
+actual fun getTimeSeconds() =
     System.currentTimeMillis() / 1000

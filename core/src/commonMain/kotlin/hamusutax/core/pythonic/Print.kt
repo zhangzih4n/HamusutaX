@@ -14,4 +14,4 @@ private fun str(data: Any?): String =
         else -> data.toString()
     }
 
-fun pyprint(data: Any?, end: String = "\n") = println(str(data) + end)
+fun pyprint(data: Any?, end: String = "\n") = print(str(data) + end)

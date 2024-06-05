@@ -14,14 +14,14 @@ class WebViewCookiesStorage: CookiesStorage {
     private val cookieManager = CookieManager.getInstance()!!
 
     override suspend fun addCookie(requestUrl: Url, cookie: Cookie) {
-        cookieManager.setCookie(requestUrl.toString(), Url.toString())
+        cookieManager.setCookie(requestUrl.toString(), cookie.toCookieString())
     }
 
     override fun close() {}
 
     override suspend fun get(requestUrl: Url): List<Cookie> {
         val cookies = cookieManager.getCookie(requestUrl.toString())
-        if (cookies == null || cookies.isNotEmpty()) return emptyList()
+        if (cookies == null || cookies.isEmpty()) return emptyList()
 
         return cookies.split("; ").map {
             val (key, value) = it.split("=")

@@ -7,6 +7,7 @@ import androidx.annotation.RequiresApi
 import hamusutax.android.sharedpreferences.clear
 import hamusutax.android.sharedpreferences.getStringSetOrNull
 import hamusutax.android.sharedpreferences.putStringSet
+import hamusutax.core.datetime.getTimeMillis
 import okhttp3.Cookie
 import okhttp3.CookieJar
 import okhttp3.HttpUrl
@@ -15,31 +16,31 @@ class SharedPreferencesCookieJar(
     private val sharedPref: SharedPreferences
 ) : CookieJar {
     @RequiresApi(VERSION_CODES.HONEYCOMB)
-    override fun loadForRequest(url: HttpUrl) =
-        (sharedPref.getStringSetOrNull(url.host) ?: emptyList())
-            .map { Cookie.parse(url, it) ?: throw IllegalStateException("Cookie parsing error from SharedPreferences") }
-            .filter { it.expiresAt > System.currentTimeMillis() && it.matches(url) }
-
-    @RequiresApi(VERSION_CODES.HONEYCOMB)
-    override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {
-        sharedPref.putStringSet(
-            url.host, ((sharedPref.getStringSetOrNull(url.host) ?: emptyList())
-                .map { Cookie.parse(url, it) ?: throw IllegalStateException("Cookie parsing error from SharedPreferences") } + cookies)
-                .filter { it.expiresAt > System.currentTimeMillis() }
-                .reversed() // 两次翻转以保留靠后的 Cookies
-                .distinctBy { Triple(it.domain, it.name, it.path) }
-                .reversed()
-                .map { it.toString() }
-                .toSet()
-        )
+    override fun loadForRequest(url: HttpUrl): List<Cookie> {
+        val now = getTimeMillis()
+        val cookieStrings = sharedPref.getStringSetOrNull(url.host) ?: return emptyList()
+        return cookieStrings.mapNotNull { Cookie.parse(url, it) }
+            .toMutableList().apply { cleanup(url, now) }
     }
 
     @RequiresApi(VERSION_CODES.HONEYCOMB)
-    operator fun get(url: HttpUrl) = loadForRequest(url)
+    override fun saveFromResponse(url: HttpUrl, cookies: List<Cookie>) {
+        val cookieStrings = sharedPref.getStringSetOrNull(url.host)
+            ?.mapNotNull { Cookie.parse(url, it) } ?: emptyList()
 
-    @RequiresApi(VERSION_CODES.HONEYCOMB)
-    operator fun set(url: HttpUrl, cookies: List<Cookie>) = saveFromResponse(url, cookies)
+        val now = getTimeMillis()
+        val filteredCookies = cookieStrings.toMutableList().apply { cleanup(url, now) }
+            .map { it.toString() }.toSet()
+
+        sharedPref.putStringSet(url.host, filteredCookies)
+    }
 
     @RequiresApi(VERSION_CODES.GINGERBREAD)
     fun clear() = sharedPref.clear()
+
+    private fun MutableList<Cookie>.cleanup(url: HttpUrl, timestamp: Long) {
+        removeAll { cookie ->
+            cookie.expiresAt < getTimeMillis() || !cookie.matches(url)
+        }
+    }
 }

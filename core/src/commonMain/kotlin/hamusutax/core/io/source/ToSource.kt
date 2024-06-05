@@ -1,6 +1,8 @@
 @file:Suppress("UNUSED")
 package hamusutax.core.io.source
 
+import hamusutax.core.io.buffer.toBuffer
+import kotlinx.io.Source
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
@@ -13,3 +15,6 @@ fun Source(file: Path) =
 
 fun Source(file: String) =
     SystemFileSystem.source(Path(file)).buffered()
+
+fun ByteArray.source() =
+    toBuffer() as Source

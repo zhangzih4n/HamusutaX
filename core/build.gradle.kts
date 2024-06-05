@@ -21,30 +21,6 @@ kotlin {
 
     jvm()
 
-    @OptIn(ExperimentalKotlinGradlePluginApi::class)
-    applyDefaultHierarchyTemplate {
-        common {
-            group("jvmAndAndroid") {
-                withJvm()
-                withAndroidTarget()
-            }
-
-            group("nonJvm") {
-                group("jsAndWasmJs") {
-                    withJs()
-                    withWasmJs()
-                }
-
-                group("native") {
-                    group("unix") {
-                        group("apple")
-                        group("linux")
-                    }
-                }
-            }
-        }
-    }
-
     js {
         browser {
             commonWebpackConfig {
@@ -72,6 +48,9 @@ kotlin {
         }
     }
 
+    /*@OptIn(ExperimentalWasmDsl::class)
+    wasmWasi()*/
+
     mingwX64()
     linuxX64()
     linuxArm64()
@@ -89,23 +68,38 @@ kotlin {
     tvosArm64()
     tvosSimulatorArm64()
 
-    sourceSets {
-        all {
-            languageSettings.apply {
-                optIn("kotlin.ExperimentalStdlibApi")
-                optIn("kotlin.contracts.ExperimentalContracts")
-                optIn("kotlin.io.encoding.ExperimentalEncodingApi")
-                optIn("kotlinx.datetime.format.FormatStringsInDatetimeFormats")
-                optIn("kotlinx.serialization.ExperimentalSerializationApi")
+    @OptIn(ExperimentalKotlinGradlePluginApi::class)
+    applyDefaultHierarchyTemplate {
+        common {
+            group("jvmAndAndroid") {
+                withJvm()
+                withAndroidTarget()
+            }
+
+            group("nonJvm") {
+                group("jsAndWasmJs") {
+                    withJs()
+                    withWasmJs()
+                }
+
+                group("native") {
+                    group("unix") {
+                        group("apple")
+                        group("linux")
+                    }
+                }
             }
         }
+    }
 
+    sourceSets {
         val jvmAndAndroidMain by getting
         val nonJvmMain by getting
         val jsAndWasmJsMain by getting
         val wasmJsMain by getting
 
         commonMain.dependencies {
+            implementation(libs.kotlinx.atomicfu)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.collections.immutable)
             implementation(libs.kotlinx.datetime)
@@ -114,13 +108,14 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.okio)
         }
-
+        commonTest.dependencies {
+            implementation(libs.kotlinx.coroutines.test)
+        }
         androidMain.dependencies {
             implementation(libs.androidx.core.ktx)
             implementation(libs.androidx.lifecycle.runtime.ktx)
             implementation(libs.kotlinx.coroutines.android)
         }
-
         jvmAndAndroidMain.dependencies {
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.cio)
@@ -130,10 +125,10 @@ kotlin {
             implementation(libs.ktor.client.logging)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.xmlutil)
             implementation(libs.okhttp)
             implementation(libs.jsoup)
         }
-
         jvmMain.dependencies {}
         jsMain.dependencies {}
         nativeMain.dependencies {}
@@ -144,6 +139,17 @@ kotlin {
         watchosMain.dependencies {}
         linuxMain.dependencies {}
         mingwMain.dependencies {}
+
+        all {
+            languageSettings.apply {
+                optIn("kotlin.ExperimentalStdlibApi")
+                optIn("kotlin.ExperimentalUnsignedTypes")
+                optIn("kotlin.contracts.ExperimentalContracts")
+                optIn("kotlin.io.encoding.ExperimentalEncodingApi")
+                optIn("kotlinx.datetime.format.FormatStringsInDatetimeFormats")
+                optIn("kotlinx.serialization.ExperimentalSerializationApi")
+            }
+        }
     }
 }
 
@@ -157,13 +163,8 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
-}
-
-dependencies {
-    testImplementation(libs.okhttp.mockwebserver)
-
-    // For KTS Documentation
-    testImplementation(libs.android.gradle)
-    testImplementation(libs.kotlin.gradle.plugin)
-    testImplementation(libs.kotlin.gradle.plugin.api)
+    packaging {
+        // See: https://github.com/Kotlin/kotlinx.coroutines#avoiding-including-the-debug-infrastructure-in-the-resulting-apk
+        resources.excludes += "DebugProbesKt.bin"
+    }
 }

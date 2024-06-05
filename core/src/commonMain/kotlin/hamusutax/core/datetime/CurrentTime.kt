@@ -1,6 +1,6 @@
 @file:Suppress("UNUSED")
 package hamusutax.core.datetime
 
-expect fun currentTimeMilliseconds(): Long
+expect fun getTimeMillis(): Long
 
-expect fun currentTimeSeconds(): Long
+expect fun getTimeSeconds(): Long

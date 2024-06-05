@@ -3,8 +3,8 @@ package hamusutax.core.datetime
 
 import kotlinx.datetime.Clock
 
-actual fun currentTimeMilliseconds() =
+actual fun getTimeMillis() =
     Clock.System.now().toEpochMilliseconds()
 
-actual fun currentTimeSeconds() =
+actual fun getTimeSeconds() =
     Clock.System.now().epochSeconds

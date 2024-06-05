@@ -26,14 +26,3 @@ fun Source.readAtMost(byteCount: Long): ByteArray {
     readAtMostTo(buffer, byteCount)
     return buffer.readByteArray()
 }
-
-/**
- * 填充缓冲区并读取字节，
- * 与 `InputStream.readNBytes` 相似
- *
- * @param byteCount 要读取的字节数。
- */
-fun Source.readNBytes(byteCount: Long): ByteArray {
-    request(byteCount)
-    return readAtMost(byteCount)
-}

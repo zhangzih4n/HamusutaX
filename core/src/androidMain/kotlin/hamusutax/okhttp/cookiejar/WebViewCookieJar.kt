@@ -24,27 +24,6 @@ class WebViewCookieJar : CookieJar {
         else emptyList()
     }
 
-    operator fun get(url: HttpUrl) = loadForRequest(url)
-
-    operator fun set(url: HttpUrl, cookies: List<Cookie>) = saveFromResponse(url, cookies)
-
-    fun removeAtEndOfSession(url: HttpUrl, cookieNames: List<String>? = null) =
-        remove(url, cookieNames, -1)
-
-    fun removeNow(url: HttpUrl, cookieNames: List<String>? = null) =
-        remove(url, cookieNames, 0)
-
     @RequiresApi(VERSION_CODES.LOLLIPOP)
     fun clear(callback: ((Boolean) -> Unit)? = null) = cookieManager.removeAllCookies(callback)
-
-    private fun remove(url: HttpUrl, cookieNames: List<String>? = null, maxAge: Int): Int {
-        val urlString = url.toString()
-        // 格式：key1=value1; key2=value2; key3=value3
-        val cookies = cookieManager.getCookie(urlString) ?: return 0
-        return cookies.split("; ")
-            .map { it.substringBefore("=") }
-            .filter { if (cookieNames != null) it in cookieNames else true }
-            .onEach { cookieManager.setCookie(urlString, "$it=; Max-Age=$maxAge") }
-            .count()
-    }
 }

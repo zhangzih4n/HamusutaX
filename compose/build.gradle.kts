@@ -66,12 +66,21 @@ kotlin {
             implementation(compose.materialIconsExtended)
             implementation(compose.ui)
             implementation(compose.components.resources)
+            implementation(libs.compose.navigation)
+            implementation(libs.coil.compose)
             implementation(projects.core)
+            implementation(libs.kotlin.reflect)
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.serialization.json)
         }
+
         androidMain.dependencies {
             implementation(libs.androidx.core.ktx)
             implementation(libs.kotlinx.coroutines.android)
+        }
+
+        commonTest.dependencies {
+            implementation(libs.kotlinx.coroutines.test)
         }
     }
 }
@@ -86,5 +95,9 @@ android {
     }
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
+    }
+    packaging {
+        // See: https://github.com/Kotlin/kotlinx.coroutines#avoiding-including-the-debug-infrastructure-in-the-resulting-apk
+        resources.excludes += "DebugProbesKt.bin"
     }
 }

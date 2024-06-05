@@ -1,6 +1,7 @@
 @file:Suppress("UNUSED")
 package hamusutax.okhttp
 
+import io.ktor.client.plugins.cookies.AcceptAllCookiesStorage
 import okhttp3.Cookie
 import okhttp3.HttpUrl
 import kotlin.contracts.InvocationKind.EXACTLY_ONCE
@@ -27,3 +28,20 @@ fun String.toCookie(httpUrl: HttpUrl) =
 
 fun String.toCookieOrNull(httpUrl: HttpUrl) =
     Cookie.parse(httpUrl, this)
+
+/**
+ * 为 Cookie 填入 Domain 与 Path，若已有则跳过
+ */
+fun Cookie.fillDefaults(requestUrl: HttpUrl): Cookie {
+    val result = this.newBuilder()
+
+    if (!path.startsWith("/")) {
+        result.path(requestUrl.encodedPath)
+    }
+
+    if (domain.isBlank()) {
+        result.domain(requestUrl.host)
+    }
+
+    return result.build()
+}

@@ -37,7 +37,7 @@ object AlistDateTimeSerializer : KSerializer<Instant> {
     override val descriptor =
         PrimitiveSerialDescriptor("AlistDateTimeSerializer", STRING)
 
-    override fun deserialize(decoder: Decoder): Instant =
+    override fun deserialize(decoder: Decoder) =
         format.parse(decoder.decodeString()).toInstantUsingOffset()
 
     override fun serialize(encoder: Encoder, value: Instant) {

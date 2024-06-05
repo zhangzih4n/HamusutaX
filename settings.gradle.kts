@@ -1,13 +1,19 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     repositories {
-        google()
+        google {
+            mavenContent {
+                includeGroupAndSubgroups("androidx")
+                includeGroupAndSubgroups("com.android")
+                includeGroupAndSubgroups("com.google")
+            }
+        }
         gradlePluginPortal()
         mavenCentral()
         maven {
             url = uri("https://jitpack.io")
             content {
-                includeGroupByRegex("com\\.github\\..+")
+                includeGroupAndSubgroups("com.github")
             }
         }
     }
@@ -15,21 +21,29 @@ pluginManagement {
 
 dependencyResolutionManagement {
     repositories {
-        google()
+        google {
+            mavenContent {
+                includeGroupAndSubgroups("androidx")
+                includeGroupAndSubgroups("com.android")
+                includeGroupAndSubgroups("com.google")
+            }
+        }
         mavenCentral()
         maven {
             url = uri("https://jitpack.io")
-            content {
-                includeGroupByRegex("com\\.github\\..+")
+            mavenContent {
+                includeGroupAndSubgroups("com.github")
             }
         }
+        maven { url = uri("https://s01.oss.sonatype.org/content/repositories/releases/") }
+        maven { url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
         maven {
             url = uri("https://androidx.dev/storage/compose-compiler/repository/")
-            content {
+            mavenContent {
                 includeModule("androidx.compose.compiler", "compiler")
             }
         }
-        maven { url = uri("https://oss.sonatype.org/content/repositories/snapshots/") }
+        mavenLocal()
     }
 }
 
