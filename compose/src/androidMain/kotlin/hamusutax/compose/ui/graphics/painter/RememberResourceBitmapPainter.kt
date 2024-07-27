@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED")
+@file:Suppress("unused")
 package hamusutax.compose.ui.graphics.painter
 
 import android.content.res.Resources

@@ -1,5 +1,5 @@
-@file:Suppress("UNUSED")
-package hamusutax.compose.modifier
+@file:Suppress("unused")
+package hamusutax.compose.ui.modifier
 
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -13,12 +13,11 @@ import androidx.compose.ui.composed
 fun Modifier.clickableNoIndication(
     onLongClick: (() -> Unit)? = null,
     onClick: () -> Unit
-): Modifier =
-    this.composed {
-        Modifier.combinedClickable(
-            interactionSource = remember { MutableInteractionSource() },
-            indication = null,
-            onLongClick = onLongClick,
-            onClick = onClick,
-        )
-    }
+) = composed {
+    Modifier.combinedClickable(
+        interactionSource = remember { MutableInteractionSource() },
+        indication = null,
+        onLongClick = onLongClick,
+        onClick = onClick,
+    )
+}

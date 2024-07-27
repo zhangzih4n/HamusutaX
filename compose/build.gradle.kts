@@ -1,14 +1,13 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.kotlinPluginSerialization)
-    alias(libs.plugins.kotlinPluginCompose)
-    alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.jetbrains.kotlin.multiplatform)
+    alias(libs.plugins.jetbrains.kotlin.plugin.compose)
+    alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
+    alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.android.library)
     id("maven-publish")
 }
 
@@ -20,44 +19,20 @@ kotlin {
         }
         publishLibraryVariants("release", "debug")
     }
-
-    jvm()
-
+    js {
+        browser()
+        nodejs()
+    }
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        browser {
-            commonWebpackConfig {
-                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    static = (static ?: mutableListOf()).apply {
-                        // Serve sources to debug inside browser
-                        add(project.projectDir.path)
-                    }
-                }
-            }
-        }
+        browser()
+        nodejs()
     }
-
-    js {
-        browser {
-            commonWebpackConfig {
-                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    static = (static ?: mutableListOf()).apply {
-                        // Serve sources to debug inside browser
-                        add(project.projectDir.path)
-                    }
-                }
-            }
-        }
-    }
+    jvm("desktop")
 
     sourceSets {
-        all {
-            languageSettings.apply {
-                optIn("androidx.compose.foundation.ExperimentalFoundationApi")
-            }
-        }
-
         commonMain.dependencies {
+            api(projects.core)
             implementation(compose.runtime)
             implementation(compose.animation)
             implementation(compose.animationGraphics)
@@ -68,19 +43,24 @@ kotlin {
             implementation(compose.components.resources)
             implementation(libs.compose.navigation)
             implementation(libs.coil.compose)
-            implementation(projects.core)
             implementation(libs.kotlin.reflect)
-            implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.kotlinx.serialization.json)
+            implementation(kotlinx.coroutines.core)
+            implementation(kotlinx.serialization.json)
         }
-
         androidMain.dependencies {
-            implementation(libs.androidx.core.ktx)
-            implementation(libs.kotlinx.coroutines.android)
+            implementation(androidx.core.ktx)
+            implementation(androidx.webkit)
+            implementation(kotlinx.coroutines.android)
         }
-
         commonTest.dependencies {
-            implementation(libs.kotlinx.coroutines.test)
+            implementation(kotlinx.coroutines.test)
+        }
+        all {
+            languageSettings.apply {
+                optIn("androidx.compose.foundation.ExperimentalFoundationApi")
+                optIn("androidx.compose.material3.ExperimentalMaterial3Api")
+                optIn("androidx.compose.ui.ExperimentalComposeUiApi")
+            }
         }
     }
 }
@@ -97,7 +77,12 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
     packaging {
-        // See: https://github.com/Kotlin/kotlinx.coroutines#avoiding-including-the-debug-infrastructure-in-the-resulting-apk
         resources.excludes += "DebugProbesKt.bin"
+    }
+    buildFeatures {
+        compose = true
+    }
+    dependencies {
+        debugImplementation(compose.uiTooling)
     }
 }

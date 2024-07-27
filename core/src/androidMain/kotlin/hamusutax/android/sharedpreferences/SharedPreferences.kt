@@ -1,11 +1,9 @@
-@file:Suppress("UNUSED")
+@file:Suppress("unused")
 package hamusutax.android.sharedpreferences
 
 import android.content.SharedPreferences
 import android.os.Build.VERSION_CODES
 import androidx.annotation.RequiresApi
-import hamusutax.core.number.bitsToDouble
-import hamusutax.core.number.bitsToLong
 import java.io.IOException
 
 fun SharedPreferences.getString(key: String) =
@@ -46,11 +44,11 @@ fun SharedPreferences.getFloatOrNull(key: String) =
     if (contains(key)) getFloat(key, 0F) else null
 
 fun SharedPreferences.getDouble(key: String) =
-    if (contains(key)) getLong(key, 0).bitsToDouble() else null
+    if (contains(key)) Double.fromBits(getLong(key, 0)) else null
         ?: throw IOException("No value with key \"$key\" in SharedPreferences!")
 
 fun SharedPreferences.getDoubleOrNull(key: String) =
-    if (contains(key)) getLong(key, 0).bitsToDouble() else null
+    if (contains(key)) Double.fromBits(getLong(key, 0)) else null
 
 fun SharedPreferences.getBoolean(key: String) =
     if (contains(key)) getBoolean(key, false) else null
@@ -92,7 +90,7 @@ fun SharedPreferences.putFloat(key: String, value: Float) =
 
 @RequiresApi(VERSION_CODES.GINGERBREAD)
 fun SharedPreferences.putDouble(key: String, value: Double) =
-    edit().putLong(key, value.bitsToLong()).apply()
+    edit().putLong(key, value.toRawBits()).apply()
 
 @RequiresApi(VERSION_CODES.GINGERBREAD)
 fun SharedPreferences.clear() =

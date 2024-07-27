@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED")
+@file:Suppress("unused")
 package hamusutax.compose.ui.widget
 
 import androidx.compose.animation.core.animateFloatAsState
@@ -25,7 +25,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import hamusutax.compose.R
-import hamusutax.compose.modifier.clickableNoIndication
+import hamusutax.compose.ui.modifier.clickableNoIndication
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalAnimationGraphicsApi::class)
@@ -43,8 +43,8 @@ fun CollapsibleText(
     Layout(
         modifier = modifier.clickableNoIndication { onClick() }.clipToBounds(),
         contents = listOf(
-            { Text(text = "\n\n", style = textStyle,) },
-            { Text(text = expandedText, style = textStyle,) },
+            { Text(text = "\n\n", style = textStyle) },
+            { Text(text = expandedText, style = textStyle) },
             {
                 SelectionContainer {
                     Text(

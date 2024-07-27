@@ -1,0 +1,30 @@
+[versions]
+ktor = "2.3.12"
+
+[libraries]
+server-netty = { group = "io.ktor", name = "ktor-server-netty", version.ref = "ktor" }
+server-jetty = { group = "io.ktor", name = "ktor-server-jetty", version.ref = "ktor" }
+server-tomcat = { group = "io.ktor", name = "ktor-server-tomcat", version.ref = "ktor" }
+server-cio = { group = "io.ktor", name = "ktor-server-cio", version.ref = "ktor" }
+client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+client-apache = { group = "io.ktor", name = "ktor-client-apache", version.ref = "ktor" }
+client-apache5 = { group = "io.ktor", name = "ktor-client-apache5", version.ref = "ktor" }
+client-java = { group = "io.ktor", name = "ktor-client-java", version.ref = "ktor" }
+client-jetty = { group = "io.ktor", name = "ktor-client-jetty", version.ref = "ktor" }
+client-android = { group = "io.ktor", name = "ktor-client-android", version.ref = "ktor" }
+client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
+client-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }
+client-winhttp = { group = "io.ktor", name = "ktor-client-winhttp", version.ref = "ktor" }
+client-curl = { group = "io.ktor", name = "ktor-client-curl", version.ref = "ktor" }
+client-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "ktor" }
+client-js = { group = "io.ktor", name = "ktor-client-js", version.ref = "ktor" }
+client-websockets = { group = "io.ktor", name = "ktor-client-websockets", version.ref = "ktor" }
+client-encoding = { group = "io.ktor", name = "ktor-client-encoding", version.ref = "ktor" }
+client-auth = { group = "io.ktor", name = "ktor-client-auth", version.ref = "ktor" }
+client-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
+client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+network-tls-certificates = { group = "io.ktor", name = "ktor-network-tls-certificates", version.ref = "ktor" }
+serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+serialization-kotlinx-xml = { group = "io.ktor", name = "ktor-serialization-kotlinx-xml", version.ref = "ktor" }
+serialization-kotlinx-cbor = { group = "io.ktor", name = "ktor-serialization-kotlinx-cbor", version.ref = "ktor" }
+serialization-kotlinx-protobuf = { group = "io.ktor", name = "ktor-serialization-kotlinx-protobuf", version.ref = "ktor" }

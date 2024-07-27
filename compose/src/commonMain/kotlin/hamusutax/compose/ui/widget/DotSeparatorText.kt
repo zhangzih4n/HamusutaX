@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED")
+@file:Suppress("unused")
 package hamusutax.compose.ui.widget
 
 import androidx.compose.material3.Text

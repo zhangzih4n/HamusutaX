@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED")
+@file:Suppress("unused")
 package hamusutax.compose.ui
 
 import androidx.compose.material3.SnackbarHostState

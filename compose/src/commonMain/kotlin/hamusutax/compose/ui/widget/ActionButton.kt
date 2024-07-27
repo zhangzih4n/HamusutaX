@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED")
+@file:Suppress("unused")
 package hamusutax.compose.ui.widget
 
 import androidx.compose.foundation.layout.Arrangement
@@ -17,10 +17,10 @@ import androidx.compose.ui.unit.dp
  */
 @Composable
 fun ActionButton(
-    modifier: Modifier = Modifier,
     title: String,
     icon: ImageVector,
-    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
     colors: ButtonColors = ButtonDefaults.textButtonColors(),
     textStyle: TextStyle = LocalTextStyle.current
 ) {

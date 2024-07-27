@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED")
+@file:Suppress("unused")
 package hamusutax.android.intent
 
 import android.content.Context
@@ -17,19 +17,12 @@ inline fun buildIntent(action: String, uri: Uri, builderAction: Intent.() -> Uni
     return Intent(action, uri).apply(builderAction)
 }
 
-inline fun buildIntent(packageContext: Context, clazz: Class<*>, builderAction: Intent.() -> Unit): Intent {
+inline fun Context.buildIntent(clazz: Class<*>, builderAction: Intent.() -> Unit): Intent {
     contract { callsInPlace(builderAction, InvocationKind.EXACTLY_ONCE) }
-    return Intent(packageContext, clazz).apply(builderAction)
+    return Intent(this, clazz).apply(builderAction)
 }
 
-@JvmName("buildIntentExtend")
-inline fun Context.buildIntent(clazz: Class<*>, builderAction: Intent.() -> Unit) =
-    buildIntent(this, clazz, builderAction)
-
-inline fun buildIntent(action: String, uri: Uri, packageContext: Context, clazz: Class<*>, builderAction: Intent.() -> Unit): Intent {
+inline fun Context.buildIntent(action: String, uri: Uri, clazz: Class<*>, builderAction: Intent.() -> Unit): Intent {
     contract { callsInPlace(builderAction, InvocationKind.EXACTLY_ONCE) }
-    return Intent(action, uri, packageContext, clazz).apply(builderAction)
+    return Intent(action, uri, this, clazz).apply(builderAction)
 }
-
-inline fun Context.buildIntent(action: String, uri: Uri, clazz: Class<*>, builderAction: Intent.() -> Unit) =
-    buildIntent(action, uri, this, clazz, builderAction)
