@@ -4,35 +4,14 @@ android-compileSdk = "35"
 android-minSdk = "1"
 androidCompose-minSdk = "21"
 android-targetSdk = "35"
-kotlin = "2.0.20-Beta2"
-compose-plugin = "1.6.11"
-compose-lifecycle = "2.8.0"
-compose-navigation = "2.8.0-alpha02"
 junit = "4.13.2"
-dokka = "1.9.20"
 apache-log4j = "2.23.1"
 apache-commons-io = "2.16.1"
 eclipse-jetty = "12.0.11"
-google-android-play = "1.8.1"
-google-accompanist = "0.34.0"
-google-firebase = "21.0.0"
-google-firebase-config-ktx = "22.0.0"
-google-firebase-dynamic-links-ktx = "22.1.0"
-google-firebase-firestore-ktx = "25.0.0"
-google-maps-android-maps = "5.0.0"
-google-maps-android-places = "3.2.0"
-google-mlkit = "17.3.0"
-google-mlkit-text-recognition = "16.0.0"
-google-ksp = "2.0.0-1.0.22"
 coil = "3.0.0-alpha06"
-okio = "3.9.0"
-okhttp = "5.0.0-alpha.12"
-koin = "3.5.6"
-koinCompiler = "1.3.1"
 xmlutil = "0.86.3"
 kaml = "0.59.0"
 sardine = "5.12"
-bouncycastle = "1.78"
 ksoup = "0.1.2"
 kevinnzou-composeWebview = "1.9.10"
 jsoup = "1.17.2"
@@ -43,72 +22,13 @@ jna = "5.14.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-compose-lifecycle-runtime = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "compose-lifecycle" }
-compose-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "compose-lifecycle" }
-compose-navigation = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation" }
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
 coil-network-ktor = { group = "io.coil-kt.coil3", name = "coil-network-ktor", version.ref = "coil" }
-kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
-kotlin-test-junit = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit", version.ref = "kotlin" }
-kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
-kotlin-scripting-common = { group = "org.jetbrains.kotlin", name = "kotlin-scripting-common", version.ref = "kotlin" }
-kotlin-scripting-jvm = { group = "org.jetbrains.kotlin", name = "kotlin-scripting-jvm", version.ref = "kotlin" }
-kotlin-scripting-jvm-host = { group = "org.jetbrains.kotlin", name = "kotlin-scripting-jvm-host", version.ref = "kotlin" }
-kotlin-scripting-dependencies = { group = "org.jetbrains.kotlin", name = "kotlin-scripting-dependencies", version.ref = "kotlin" }
-kotlin-scripting-dependencies-maven = { group = "org.jetbrains.kotlin", name = "kotlin-scripting-dependencies-maven", version.ref = "kotlin" }
-google-android-play-core-ktx = { group = "com.google.android.play", name = "core-ktx", version.ref = "google-android-play" }
-google-accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "google-accompanist" }
-google-accompanist-navigation-material = { group = "com.google.accompanist", name = "accompanist-navigation-material", version.ref = "google-accompanist" }
-google-accompanist-drawablepainter = { group = "com.google.accompanist", name = "accompanist-drawablepainter", version.ref = "google-accompanist" }
-google-accompanist-adaptive = { group = "com.google.accompanist", name = "accompanist-adaptive", version.ref = "google-accompanist" }
-google-accompanist-testharness = { group = "com.google.accompanist", name = "accompanist-testharness", version.ref = "google-accompanist" }
-google-firebase-common-ktx = { group = "com.google.firebase", name = "firebase-common-ktx", version.ref = "google-firebase" }
-google-firebase-crashlytics-ktx = { group = "com.google.firebase", name = "firebase-crashlytics-ktx", version.ref = "google-firebase" }
-google-firebase-database-ktx = { group = "com.google.firebase", name = "firebase-database-ktx", version.ref = "google-firebase" }
-google-firebase-dynamic-links-ktx = { group = "com.google.firebase", name = "firebase-dynamic-links-ktx", version.ref = "google-firebase-dynamic-links-ktx" }
-google-firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "google-firebase-firestore-ktx" }
-google-firebase-functions-ktx = { group = "com.google.firebase", name = "firebase-functions-ktx", version.ref = "google-firebase" }
-google-firebase-inappmessaging-display-ktx = { group = "com.google.firebase", name = "firebase-inappmessaging-display-ktx", version.ref = "google-firebase" }
-google-firebase-inappmessaging-ktx = { group = "com.google.firebase", name = "firebase-inappmessaging-ktx", version.ref = "google-firebase" }
-google-firebase-config-ktx = { group = "com.google.firebase", name = "firebase-config-ktx", version.ref = "google-firebase-config-ktx" }
-google-firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "google-firebase" }
-google-maps-android-maps = { group = "com.google.maps.android", name = "maps-ktx", version.ref = "google-maps-android-maps" }
-google-maps-android-places = { group = "com.google.maps.android", name = "places-ktx", version.ref = "google-maps-android-places" }
-google-mlkit-vision-common = { group = "com.google.mlkit", name = "vision-common", version.ref = "google-mlkit" }
-google-mlkit-text-recognition = { group = "com.google.mlkit", name = "text-recognition", version.ref = "google-mlkit-text-recognition" }
-google-mlkit-text-recognition-chinese = { group = "com.google.mlkit", name = "text-recognition-chinese", version.ref = "google-mlkit-text-recognition" }
-google-mlkit-text-recognition-japanese = { group = "com.google.mlkit", name = "text-recognition-japanese", version.ref = "google-mlkit-text-recognition" }
-google-mlkit-text-recognition-korean = { group = "com.google.mlkit", name = "text-recognition-korean", version.ref = "google-mlkit-text-recognition" }
-google-mlkit-text-recognition-devanagari = { group = "com.google.mlkit", name = "text-recognition-devanagari", version.ref = "google-mlkit-text-recognition" }
 logback-classic = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }
 apache-log4j-core = { group = "org.apache.logging.log4j", name = "log4j-core", version.ref = "apache-log4j" }
 apache-log4j-slf4j2-impl = { group = "org.apache.logging.log4j", name = "log4j-slf4j2-impl", version.ref = "apache-log4j" }
 apache-commons-io = { group = "commons-io", name = "commons-io", version.ref = "apache-commons-io" }
-okio = { group = "com.squareup.okio", name = "okio", version.ref = "okio" }
-okio-nodefilesystem = { group = "com.squareup.okio", name = "okio-nodefilesystem", version.ref = "okio" }
-okio-fakefilesystem = { group = "com.squareup.okio", name = "okio-fakefilesystem", version.ref = "okio" }
-okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
-okhttp-coroutines = { group = "com.squareup.okhttp3", name = "okhttp-coroutines", version.ref = "okhttp" }
-okhttp-urlconnection = { group = "com.squareup.okhttp3", name = "okhttp-urlconnection", version.ref = "okhttp" }
-okhttp-dnsoverhttps = { group = "com.squareup.okhttp3", name = "okhttp-dnsoverhttps", version.ref = "okhttp" }
-okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
-okhttp-mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okhttp" }
-koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
-koin-core-coroutines = { group = "io.insert-koin", name = "koin-core-coroutines", version.ref = "koin" }
-koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
-koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
-koin-android-test = { group = "io.insert-koin", name = "koin-android-test", version.ref = "koin" }
-koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koin" }
-koin-androidx-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
-koin-androidx-compose-navigation = { group = "io.insert-koin", name = "koin-androidx-compose-navigation" }
-koin-compiler = { group = "io.insert-koin", name = "koin-ksp-compiler", version.ref = "koinCompiler" }
-bcprov = { group = "org.bouncycastle", name = "bcprov-jdk18on", version.ref = "bouncycastle" }
-bctls = { group = "org.bouncycastle", name = "bctls-jdk18on", version.ref = "bouncycastle" }
-bcpkix = { group = "org.bouncycastle", name = "bcpkix-jdk18on", version.ref = "bouncycastle" }
-bcpg = { group = "org.bouncycastle", name = "bcpg-jdk18on", version.ref = "bouncycastle" }
-bcmail = { group = "org.bouncycastle", name = "bcmail-jdk18on", version.ref = "bouncycastle" }
-bcutil = { group = "org.bouncycastle", name = "bcutil-jdk18on", version.ref = "bouncycastle" }
 kevinnzou-compose-webview = { group = "io.github.kevinnzou", name = "compose-webview-multiplatform", version.ref = "kevinnzou-composeWebview" }
 sardine = { group = "com.github.lookfirst", name = "sardine", version.ref = "sardine" }
 ksoup = { group = "com.fleeksoft.ksoup", name = "ksoup", version.ref = "ksoup" }
@@ -124,15 +44,5 @@ eclipse-jetty-server = { group = "org.eclipse.jetty", name = "jetty-server", ver
 eclipse-jetty-util = { group = "org.eclipse.jetty", name = "jetty-util", version.ref = "eclipse-jetty" }
 
 [plugins]
-jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
-jetbrains-kotlin-native-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
-jetbrains-kotlin-plugin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
-jetbrains-kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
-jetbrains-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
-google-ksp = { id = "com.google.devtools.ksp", version.ref = "google-ksp" }

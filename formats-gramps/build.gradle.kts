@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
-    alias(libs.plugins.jetbrains.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
+    alias(jetbrains.plugins.kotlin.multiplatform)
+    alias(jetbrains.plugins.kotlin.plugin.serialization)
     id("maven-publish")
 }
 
@@ -53,16 +53,16 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
-            implementation(kotlinx.atomicfu)
-            implementation(kotlinx.coroutines.core)
-            implementation(kotlinx.collections.immutable)
-            implementation(kotlinx.io.core)
-            implementation(kotlinx.io.bytestring)
-            implementation(kotlinx.serialization.json)
+            implementation(jetbrains.kotlinx.atomicfu)
+            implementation(jetbrains.kotlinx.coroutines.core)
+            implementation(jetbrains.kotlinx.collections.immutable)
+            implementation(jetbrains.kotlinx.io.core)
+            implementation(jetbrains.kotlinx.io.bytestring)
+            implementation(jetbrains.kotlinx.serialization.json)
             implementation(libs.xmlutil)
         }
         commonTest.dependencies {
-            implementation(kotlinx.coroutines.test)
+            implementation(jetbrains.kotlinx.coroutines.test)
         }
         all {
             languageSettings.apply {

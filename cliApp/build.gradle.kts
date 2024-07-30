@@ -3,10 +3,11 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
-    alias(libs.plugins.jetbrains.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.kotlin.plugin.allopen)
-    alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
-    alias(kotlinx.plugins.benchmark)
+    alias(jetbrains.plugins.kotlin.multiplatform)
+    alias(jetbrains.plugins.kotlin.plugin.allopen)
+    alias(jetbrains.plugins.kotlin.plugin.serialization)
+    alias(jetbrains.plugins.kotlinx.benchmark)
+    alias(google.plugins.ksp)
 }
 
 kotlin {
@@ -90,32 +91,37 @@ kotlin {
         }
         commonMain.dependencies {
             implementation(projects.core)
+            implementation(projects.crypto)
             implementation(projects.cli)
             implementation(projects.formatsBencode)
             implementation(projects.formatsBittorrent)
             implementation(projects.formatsEbml)
-            implementation(kotlinx.atomicfu)
-            implementation(kotlinx.benchmark.runtime)
-            implementation(kotlinx.coroutines.core)
-            implementation(kotlinx.collections.immutable)
-            implementation(kotlinx.datetime)
-            implementation(kotlinx.io.core)
-            implementation(kotlinx.io.bytestring)
-            implementation(kotlinx.serialization.json)
-            implementation(kotlinx.serialization.json.io)
-            implementation(libs.okio)
+            implementation(jetbrains.kotlinx.atomicfu)
+            implementation(jetbrains.kotlinx.benchmark.runtime)
+            implementation(jetbrains.kotlinx.coroutines.core)
+            implementation(jetbrains.kotlinx.collections.immutable)
+            implementation(jetbrains.kotlinx.datetime)
+            implementation(jetbrains.kotlinx.io.core)
+            implementation(jetbrains.kotlinx.io.bytestring)
+            implementation(jetbrains.kotlinx.serialization.json)
+            implementation(jetbrains.kotlinx.serialization.json.io)
+            implementation(kotlincrypto.hash.md)
+            implementation(kotlincrypto.hash.sha1)
+            implementation(kotlincrypto.hash.sha2)
+            implementation(kotlincrypto.hash.sha3)
+            implementation(squareup.okio)
         }
         commonTest.dependencies {
-            implementation(kotlinx.coroutines.test)
+            implementation(jetbrains.kotlinx.coroutines.test)
         }
         jsMain.dependencies {
             implementation(projects.okhttp)
-            implementation(ktor.client.js)
+            implementation(ktor.client.engine.js)
         }
         javaMain.dependencies {
             implementation(projects.okhttp)
-            implementation(ktor.client.okhttp)
-            implementation(libs.okhttp)
+            implementation(ktor.client.engine.okhttp)
+            implementation(squareup.okhttp)
             implementation(libs.jna.platform)
             implementation(libs.kaml)
             implementation(libs.ksoup)
@@ -132,7 +138,7 @@ kotlin {
             implementation(ktor.serialization.kotlinx.json)
         }
         ktorCioMain.dependencies {
-            implementation(ktor.client.cio)
+            implementation(ktor.client.engine.cio)
         }
     }
 }

@@ -2,10 +2,10 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     application
-    alias(libs.plugins.jetbrains.kotlin.jvm)
-    alias(libs.plugins.jetbrains.kotlin.plugin.allopen)
-    alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
-    alias(kotlinx.plugins.benchmark)
+    alias(jetbrains.plugins.kotlin.jvm)
+    alias(jetbrains.plugins.kotlin.plugin.allopen)
+    alias(jetbrains.plugins.kotlin.plugin.serialization)
+    alias(jetbrains.plugins.kotlinx.benchmark)
 }
 
 kotlin {
@@ -15,7 +15,7 @@ kotlin {
 dependencies {
     implementation(projects.core)
     implementation(projects.cliApp)
-    implementation(kotlinx.coroutines.core)
+    implementation(jetbrains.kotlinx.coroutines.core)
     api(libs.kevinnzou.compose.webview)
 }
 

@@ -3,10 +3,10 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.jetbrains.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.kotlin.plugin.compose)
-    alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
-    alias(libs.plugins.jetbrains.compose)
+    alias(jetbrains.plugins.kotlin.multiplatform)
+    alias(jetbrains.plugins.kotlin.plugin.compose)
+    alias(jetbrains.plugins.kotlin.plugin.serialization)
+    alias(jetbrains.plugins.compose)
     alias(libs.plugins.android.library)
     id("maven-publish")
 }
@@ -41,19 +41,19 @@ kotlin {
             implementation(compose.materialIconsExtended)
             implementation(compose.ui)
             implementation(compose.components.resources)
-            implementation(libs.compose.navigation)
+            implementation(jetbrains.compose.navigation)
             implementation(libs.coil.compose)
-            implementation(libs.kotlin.reflect)
-            implementation(kotlinx.coroutines.core)
-            implementation(kotlinx.serialization.json)
+            implementation(jetbrains.kotlin.reflect)
+            implementation(jetbrains.kotlinx.coroutines.core)
+            implementation(jetbrains.kotlinx.serialization.json)
         }
         androidMain.dependencies {
             implementation(androidx.core.ktx)
             implementation(androidx.webkit)
-            implementation(kotlinx.coroutines.android)
+            implementation(jetbrains.kotlinx.coroutines.android)
         }
         commonTest.dependencies {
-            implementation(kotlinx.coroutines.test)
+            implementation(jetbrains.kotlinx.coroutines.test)
         }
         all {
             languageSettings.apply {

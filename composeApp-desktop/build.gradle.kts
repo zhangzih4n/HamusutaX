@@ -1,9 +1,9 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
-    alias(libs.plugins.jetbrains.kotlin.jvm)
-    alias(libs.plugins.jetbrains.kotlin.plugin.compose)
-    alias(libs.plugins.jetbrains.compose)
+    alias(jetbrains.plugins.kotlin.jvm)
+    alias(jetbrains.plugins.kotlin.plugin.compose)
+    alias(jetbrains.plugins.compose)
 }
 
 group = "hamusuta"

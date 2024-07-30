@@ -3,7 +3,7 @@ package hamusutax.clients.alist.model.response
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Api<T>(
+data class Api<T : Any>(
     val code: Int,
     val message: String,
     val data: T?

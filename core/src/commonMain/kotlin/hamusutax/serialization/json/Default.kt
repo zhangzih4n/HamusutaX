@@ -1,4 +1,4 @@
-package hamusutax.serialization
+package hamusutax.serialization.json
 
 import kotlinx.serialization.json.Json
 

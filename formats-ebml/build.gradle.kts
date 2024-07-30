@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 
 plugins {
-    alias(libs.plugins.jetbrains.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
+    alias(jetbrains.plugins.kotlin.multiplatform)
+    alias(jetbrains.plugins.kotlin.plugin.serialization)
     id("maven-publish")
 }
 
@@ -43,10 +43,10 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
-            implementation(kotlinx.datetime)
-            implementation(kotlinx.io.core)
-            implementation(kotlinx.io.bytestring)
-            implementation(kotlinx.serialization.json)
+            implementation(jetbrains.kotlinx.datetime)
+            implementation(jetbrains.kotlinx.io.core)
+            implementation(jetbrains.kotlinx.io.bytestring)
+            implementation(jetbrains.kotlinx.serialization.json)
         }
         all {
             languageSettings.apply {

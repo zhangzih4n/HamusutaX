@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.jetbrains.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
+    alias(jetbrains.plugins.kotlin.multiplatform)
+    alias(jetbrains.plugins.kotlin.plugin.serialization)
     alias(libs.plugins.android.library)
     id("maven-publish")
 }
@@ -29,8 +29,8 @@ kotlin {
         browser()
         nodejs()
     }
-//    @OptIn(ExperimentalWasmDsl::class)
-//    wasmWasi()
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmWasi()
     jvm()
     linuxArm64()
     linuxX64()
@@ -58,10 +58,9 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(projects.core)
-            implementation(kotlinx.io.core)
-            implementation(kotlinx.io.bytestring)
-            implementation(libs.okio)
+            implementation(jetbrains.kotlinx.io.core)
+            implementation(jetbrains.kotlinx.io.bytestring)
+            implementation(squareup.okio)
         }
         androidMain.dependencies {
             implementation(androidx.core.ktx)

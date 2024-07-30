@@ -5,7 +5,7 @@ import kotlin.jvm.JvmName
 /**
  * 重复执行块，直到得到一个非空值
  */
-fun <T> repeatUntilNotNull(block: () -> T?): T {
+inline fun <T : Any> repeatUntilNotNull(block: () -> T?): T {
     while (true) {
         block()?.let { return it }
     }
@@ -14,7 +14,7 @@ fun <T> repeatUntilNotNull(block: () -> T?): T {
 /**
  * 重复执行块，直到得到一个结果复合要求的值
  */
-fun <T : Any> repeatUntil(predicate: (T) -> Boolean, block: () -> T): T {
+inline fun <T : Any> repeatUntil(predicate: (T) -> Boolean, block: () -> T): T {
     while (true) {
         block().let {
             if (predicate(it))
@@ -27,7 +27,7 @@ fun <T : Any> repeatUntil(predicate: (T) -> Boolean, block: () -> T): T {
  * 重复执行块，直到得到一个结果复合要求的值
  */
 @JvmName("repeatNullableUntil")
-fun <T> repeatUntil(predicate: (T?) -> Boolean, block: () -> T?): T? {
+inline fun <T> repeatUntil(predicate: (T?) -> Boolean, block: () -> T?): T? {
     while (true) {
         block().let {
             if (predicate(it))

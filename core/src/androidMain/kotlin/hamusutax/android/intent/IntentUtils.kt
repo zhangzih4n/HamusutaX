@@ -2,7 +2,7 @@
 package hamusutax.android.intent
 
 import android.content.Intent
-import hamusutax.serialization.JsonEncodeDefaults
+import hamusutax.serialization.json.JsonEncodeDefaults
 import kotlinx.serialization.encodeToString
 
 inline fun <reified T> Intent.putJsonExtra(name: String, value: T): Intent {

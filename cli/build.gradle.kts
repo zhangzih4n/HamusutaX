@@ -3,8 +3,8 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.jetbrains.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
+    alias(jetbrains.plugins.kotlin.multiplatform)
+    alias(jetbrains.plugins.kotlin.plugin.serialization)
     alias(libs.plugins.android.library)
 }
 
@@ -95,43 +95,43 @@ kotlin {
             implementation(projects.core)
             implementation(projects.formatsBencode)
             implementation(projects.formatsEbml)
-            implementation(kotlinx.atomicfu)
-            implementation(kotlinx.coroutines.core)
-            implementation(kotlinx.collections.immutable)
-            implementation(kotlinx.datetime)
-            implementation(kotlinx.io.core)
-            implementation(kotlinx.io.bytestring)
-            implementation(kotlinx.serialization.json)
-            implementation(kotlinx.serialization.json.io)
-            implementation(libs.okio)
+            implementation(jetbrains.kotlinx.atomicfu)
+            implementation(jetbrains.kotlinx.coroutines.core)
+            implementation(jetbrains.kotlinx.collections.immutable)
+            implementation(jetbrains.kotlinx.datetime)
+            implementation(jetbrains.kotlinx.io.core)
+            implementation(jetbrains.kotlinx.io.bytestring)
+            implementation(jetbrains.kotlinx.serialization.json)
+            implementation(jetbrains.kotlinx.serialization.json.io)
+            implementation(squareup.okio)
         }
         commonTest.dependencies {
-            implementation(kotlinx.coroutines.test)
+            implementation(jetbrains.kotlinx.coroutines.test)
         }
         androidMain.dependencies {
-            implementation(ktor.client.android)
+            implementation(ktor.client.engine.android)
         }
         jsMain.dependencies {
             implementation(projects.okhttp)
-            implementation(ktor.client.js)
+            implementation(ktor.client.engine.js)
         }
         jvmMain.dependencies {
-            implementation(ktor.client.apache)
-            implementation(ktor.client.apache5)
-            implementation(ktor.client.java)
-            implementation(ktor.client.jetty)
+            implementation(ktor.client.engine.apache)
+            implementation(ktor.client.engine.apache5)
+            implementation(ktor.client.engine.java)
+            implementation(ktor.client.engine.jetty)
         }
         mingwMain.dependencies {
-            implementation(ktor.client.winhttp)
+            implementation(ktor.client.engine.winhttp)
         }
         javaMain.dependencies {
             implementation(projects.okhttp)
             implementation(libs.jna.platform)
-            implementation(ktor.client.okhttp)
-            implementation(libs.okhttp)
+            implementation(ktor.client.engine.okhttp)
+            implementation(squareup.okhttp)
         }
         appleExcludeWatchosDeviceMain.dependencies {
-            implementation(ktor.client.darwin)
+            implementation(ktor.client.engine.darwin)
         }
         ktorMain.dependencies {
             implementation(projects.ktor)
@@ -145,10 +145,10 @@ kotlin {
             implementation(ktor.serialization.kotlinx.json)
         }
         ktorCioMain.dependencies {
-            implementation(ktor.client.cio)
+            implementation(ktor.client.engine.cio)
         }
         curlMain.dependencies {
-            implementation(ktor.client.curl)
+            implementation(ktor.client.engine.curl)
         }
     }
 }

@@ -1,0 +1,81 @@
+[versions]
+kotlin = "2.0.20-Beta2"
+kotlinx-atomicfu = "0.25.0"
+kotlinx-benchmark = "0.4.11"
+kotlinx-browser = "0.1"
+kotlinx-cli = "0.3.6"
+kotlinx-coroutines = "1.9.0-RC"
+kotlinx-collectionsImmutable = "0.3.7"
+kotlinx-dataframe = "0.13.1"
+kotlinx-datetime = "0.6.0"
+kotlinx-html = "0.11.0"
+kotlinx-io = "0.5.1"
+kotlinx-kandy = "0.6.0"
+kotlinx-kover = "0.8.2"
+kotlinx-reflect-lite = "1.1.0"
+kotlinx-rpc = "0.2.1"
+kotlinx-serialization = "1.7.1"
+compose-plugin = "1.6.11"
+compose-lifecycle = "2.8.0"
+compose-navigation = "2.8.0-alpha02"
+dokka = "1.9.20"
+
+[libraries]
+compose-lifecycle-runtime = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "compose-lifecycle" }
+compose-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "compose-lifecycle" }
+compose-navigation = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation" }
+kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlin" }
+kotlin-test-junit = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit", version.ref = "kotlin" }
+kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+kotlin-scripting-common = { group = "org.jetbrains.kotlin", name = "kotlin-scripting-common", version.ref = "kotlin" }
+kotlin-scripting-jvm = { group = "org.jetbrains.kotlin", name = "kotlin-scripting-jvm", version.ref = "kotlin" }
+kotlin-scripting-jvm-host = { group = "org.jetbrains.kotlin", name = "kotlin-scripting-jvm-host", version.ref = "kotlin" }
+kotlin-scripting-dependencies = { group = "org.jetbrains.kotlin", name = "kotlin-scripting-dependencies", version.ref = "kotlin" }
+kotlin-scripting-dependencies-maven = { group = "org.jetbrains.kotlin", name = "kotlin-scripting-dependencies-maven", version.ref = "kotlin" }
+kotlinx-atomicfu = { group = "org.jetbrains.kotlinx", name = "atomicfu", version.ref = "kotlinx-atomicfu" }
+kotlinx-benchmark-runtime = { group = "org.jetbrains.kotlinx", name = "kotlinx-benchmark-runtime", version.ref = "kotlinx-benchmark" }
+kotlinx-browser = { group = "org.jetbrains.kotlinx", name = "kotlinx-browser", version.ref = "kotlinx-browser" }
+kotlinx-cli = { group = "org.jetbrains.kotlinx", name = "kotlinx-cli", version.ref = "kotlinx-cli" }
+kotlinx-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinx-collectionsImmutable" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-swing = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
+kotlinx-dataframe = { group = "org.jetbrains.kotlinx", name = "dataframe", version.ref = "kotlinx-dataframe" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
+kotlinx-html = { group = "org.jetbrains.kotlinx", name = "kotlinx-html", version.ref = "kotlinx-html" }
+kotlinx-html-jvm = { group = "org.jetbrains.kotlinx", name = "kotlinx-html-jvm", version.ref = "kotlinx-html" }
+kotlinx-html-js = { group = "org.jetbrains.kotlinx", name = "kotlinx-html-js", version.ref = "kotlinx-html" }
+kotlinx-io-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-core", version.ref = "kotlinx-io" }
+kotlinx-io-bytestring = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-bytestring", version.ref = "kotlinx-io" }
+kotlinx-kandy-lets-plot = { group = "org.jetbrains.kotlinx", name = "kandy-lets-plot", version.ref = "kotlinx-kandy" }
+kotlinx-reflect-lite = { group = "org.jetbrains.kotlinx", name = "kotlinx.reflect.lite", version.ref = "kotlinx-reflect-lite" }
+kotlinx-rpc-runtime-client = { group = "org.jetbrains.kotlinx", name = "kotlinx-rpc-runtime-client", version.ref = "kotlinx-rpc" }
+kotlinx-rpc-runtime-server = { group = "org.jetbrains.kotlinx", name = "kotlinx-rpc-runtime-server", version.ref = "kotlinx-rpc" }
+kotlinx-rpc-runtime-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-rpc-runtime-serialization-json", version.ref = "kotlinx-rpc" }
+kotlinx-rpc-transport-ktor-client = { group = "org.jetbrains.kotlinx", name = "kotlinx-rpc-transport-ktor-client", version.ref = "kotlinx-rpc" }
+kotlinx-rpc-transport-ktor-server = { group = "org.jetbrains.kotlinx", name = "kotlinx-rpc-transport-ktor-server", version.ref = "kotlinx-rpc" }
+kotlinx-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-json-io = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json-io", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-json-okio = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json-okio", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-protobuf = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-protobuf", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-cbor = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-cbor", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-hocon = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-hocon", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-properties = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-properties", version.ref = "kotlinx-serialization" }
+
+[plugins]
+compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-native-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+kotlin-plugin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
+kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlinx-atomicfu = { id = "org.jetbrains.kotlinx.atomicfu", version.ref = "kotlinx-atomicfu" }
+kotlinx-benchmark = { id = "org.jetbrains.kotlinx.benchmark", version.ref = "kotlinx-benchmark" }
+kotlinx-dataframe = { id = "org.jetbrains.kotlinx.dataframe", version.ref = "kotlinx-dataframe" }
+kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kotlinx-kover" }
+kotlinx-rpc = { id = "org.jetbrains.kotlinx.rpc.plugin", version.ref = "kotlinx-rpc" }

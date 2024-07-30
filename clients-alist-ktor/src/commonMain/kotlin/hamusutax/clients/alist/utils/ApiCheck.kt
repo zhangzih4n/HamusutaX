@@ -2,7 +2,7 @@ package hamusutax.clients.alist.utils
 
 import hamusutax.clients.alist.model.response.Api
 
-fun <T> Api<T>.checkCode() =
+fun <T : Any> Api<T>.checkCode() =
     when (code) {
         200 -> data
         401 -> throw Alist401Exception(message)

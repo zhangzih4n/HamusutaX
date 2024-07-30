@@ -10,14 +10,14 @@ import org.jsoup.nodes.TextNode
 /**
  * 使 XPath 支持直接获取节点文本
  */
-fun Element.xpathText(xpath: String): String {
+fun Element.selectXpathString(xpath: String): String {
     // 获取属性值
-    Regex("^(.+)/+@([^/@]+)$").find(xpath)?.let { matchResult ->
+    Regex("^(.+)/@([^/@]+)$").find(xpath)?.let { matchResult ->
         val (elementXPath, attributeKey) = matchResult.destructured
         return selectXpath(elementXPath).attr(attributeKey)
     }
     return selectXpath(xpath, TextNode::class.java).first().text()
 }
 
-fun Response.asJsoup(): Document =
+fun Response.toDocument(): Document =
     Jsoup.parse(body.string(), request.url.toString())

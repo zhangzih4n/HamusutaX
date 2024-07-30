@@ -59,17 +59,28 @@ dependencyResolutionManagement {
     }
 
     versionCatalogs {
-        create("kotlinx") {
-            from(files("gradle/kotlinx.versions.toml"))
+        create("jetbrains") {
+            from(files("gradle/jetbrains.versions.toml"))
         }
         create("androidx") {
             from(files("gradle/androidx.versions.toml"))
         }
+        create("google") {
+            from(files("gradle/google.versions.toml"))
+        }
         create("ktor") {
             from(files("gradle/ktor.versions.toml"))
         }
+        create("squareup") {
+            from(files("gradle/squareup.versions.toml"))
+        }
+        create("koin") {
+            from(files("gradle/koin.versions.toml"))
+        }
+        create("bouncycastle") {
+            from(files("gradle/bouncycastle.versions.toml"))
+        }
         create("kotlincrypto") {
-            // https://github.com/KotlinCrypto/version-catalog/blob/master/gradle/kotlincrypto.versions.toml
             from("org.kotlincrypto:version-catalog:0.5.2")
         }
     }

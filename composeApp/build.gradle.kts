@@ -5,9 +5,9 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
-    alias(libs.plugins.jetbrains.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.kotlin.plugin.compose)
-    alias(libs.plugins.jetbrains.compose)
+    alias(jetbrains.plugins.kotlin.multiplatform)
+    alias(jetbrains.plugins.kotlin.plugin.compose)
+    alias(jetbrains.plugins.compose)
     alias(libs.plugins.android.application)
 }
 
@@ -108,10 +108,10 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(androidx.activity.compose)
-            implementation(ktor.client.android)
+            implementation(ktor.client.engine.android)
         }
         jsMain.dependencies {
-            implementation(ktor.client.js)
+            implementation(ktor.client.engine.js)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -119,7 +119,7 @@ kotlin {
         }
         javaMain.dependencies {
             implementation(projects.okhttp)
-            implementation(ktor.client.okhttp)
+            implementation(ktor.client.engine.okhttp)
         }
         ktorMain.dependencies {
             implementation(projects.ktor)
@@ -133,7 +133,7 @@ kotlin {
             implementation(ktor.serialization.kotlinx.json)
         }
         ktorCioMain.dependencies {
-            implementation(ktor.client.cio)
+            implementation(ktor.client.engine.cio)
         }
     }
 }

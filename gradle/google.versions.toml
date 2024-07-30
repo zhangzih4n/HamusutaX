@@ -1,0 +1,41 @@
+[versions]
+ksp = "2.0.0-1.0.24"
+android-play = "1.8.1"
+accompanist = "0.34.0"
+firebase = "21.0.0"
+firebase-config-ktx = "22.0.0"
+firebase-dynamic-links-ktx = "22.1.0"
+firebase-firestore-ktx = "25.0.0"
+maps-android-maps = "5.0.0"
+maps-android-places = "3.2.0"
+mlkit = "17.3.0"
+mlkit-text-recognition = "16.0.0"
+
+[libraries]
+android-play-core-ktx = { group = "com.google.android.play", name = "core-ktx", version.ref = "android-play" }
+accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanist" }
+accompanist-navigation-material = { group = "com.google.accompanist", name = "accompanist-navigation-material", version.ref = "accompanist" }
+accompanist-drawablepainter = { group = "com.google.accompanist", name = "accompanist-drawablepainter", version.ref = "accompanist" }
+accompanist-adaptive = { group = "com.google.accompanist", name = "accompanist-adaptive", version.ref = "accompanist" }
+accompanist-testharness = { group = "com.google.accompanist", name = "accompanist-testharness", version.ref = "accompanist" }
+firebase-common-ktx = { group = "com.google.firebase", name = "firebase-common-ktx", version.ref = "firebase" }
+firebase-crashlytics-ktx = { group = "com.google.firebase", name = "firebase-crashlytics-ktx", version.ref = "firebase" }
+firebase-database-ktx = { group = "com.google.firebase", name = "firebase-database-ktx", version.ref = "firebase" }
+firebase-dynamic-links-ktx = { group = "com.google.firebase", name = "firebase-dynamic-links-ktx", version.ref = "firebase-dynamic-links-ktx" }
+firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebase-firestore-ktx" }
+firebase-functions-ktx = { group = "com.google.firebase", name = "firebase-functions-ktx", version.ref = "firebase" }
+firebase-inappmessaging-display-ktx = { group = "com.google.firebase", name = "firebase-inappmessaging-display-ktx", version.ref = "firebase" }
+firebase-inappmessaging-ktx = { group = "com.google.firebase", name = "firebase-inappmessaging-ktx", version.ref = "firebase" }
+firebase-config-ktx = { group = "com.google.firebase", name = "firebase-config-ktx", version.ref = "firebase-config-ktx" }
+firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "firebase" }
+maps-android-maps = { group = "com.google.maps.android", name = "maps-ktx", version.ref = "maps-android-maps" }
+maps-android-places = { group = "com.google.maps.android", name = "places-ktx", version.ref = "maps-android-places" }
+mlkit-vision-common = { group = "com.google.mlkit", name = "vision-common", version.ref = "mlkit" }
+mlkit-text-recognition = { group = "com.google.mlkit", name = "text-recognition", version.ref = "mlkit-text-recognition" }
+mlkit-text-recognition-chinese = { group = "com.google.mlkit", name = "text-recognition-chinese", version.ref = "mlkit-text-recognition" }
+mlkit-text-recognition-japanese = { group = "com.google.mlkit", name = "text-recognition-japanese", version.ref = "mlkit-text-recognition" }
+mlkit-text-recognition-korean = { group = "com.google.mlkit", name = "text-recognition-korean", version.ref = "mlkit-text-recognition" }
+mlkit-text-recognition-devanagari = { group = "com.google.mlkit", name = "text-recognition-devanagari", version.ref = "mlkit-text-recognition" }
+
+[plugins]
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

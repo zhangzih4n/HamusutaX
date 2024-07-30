@@ -1,0 +1,10 @@
+[versions]
+main = "1.78"
+
+[libraries]
+bcprov = { group = "org.bouncycastle", name = "bcprov-jdk18on", version.ref = "main" }
+bctls = { group = "org.bouncycastle", name = "bctls-jdk18on", version.ref = "main" }
+bcpkix = { group = "org.bouncycastle", name = "bcpkix-jdk18on", version.ref = "main" }
+bcpg = { group = "org.bouncycastle", name = "bcpg-jdk18on", version.ref = "main" }
+bcmail = { group = "org.bouncycastle", name = "bcmail-jdk18on", version.ref = "main" }
+bcutil = { group = "org.bouncycastle", name = "bcutil-jdk18on", version.ref = "main" }

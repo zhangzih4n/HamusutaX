@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.jetbrains.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
+    alias(jetbrains.plugins.kotlin.multiplatform)
+    alias(jetbrains.plugins.kotlin.plugin.serialization)
     alias(libs.plugins.android.library)
     id("maven-publish")
 }
@@ -39,9 +39,9 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.core)
-            implementation(kotlinx.datetime)
-            implementation(kotlinx.io.core)
-            implementation(kotlinx.io.bytestring)
+            implementation(jetbrains.kotlinx.datetime)
+            implementation(jetbrains.kotlinx.io.core)
+            implementation(jetbrains.kotlinx.io.bytestring)
             implementation(ktor.client.core)
             implementation(ktor.client.encoding)
         }

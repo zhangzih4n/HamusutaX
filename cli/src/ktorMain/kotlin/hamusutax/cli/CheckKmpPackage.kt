@@ -1,6 +1,6 @@
 package hamusutax.cli
 
-import hamusutax.serialization.JsonEncodeDefaultsPrettyPrint
+import hamusutax.serialization.json.JsonEncodeDefaultsPrettyPrint
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import kotlinx.coroutines.coroutineScope

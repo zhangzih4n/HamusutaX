@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
 plugins {
-    alias(libs.plugins.jetbrains.kotlin.multiplatform)
-    alias(libs.plugins.jetbrains.kotlin.plugin.serialization)
+    alias(jetbrains.plugins.kotlin.multiplatform)
+    alias(jetbrains.plugins.kotlin.plugin.serialization)
     id("maven-publish")
 }
 
@@ -53,26 +53,26 @@ kotlin {
         commonMain.dependencies {
             implementation(projects.core)
             implementation(projects.ktor)
-            implementation(kotlinx.atomicfu)
-            implementation(kotlinx.coroutines.core)
-            implementation(kotlinx.collections.immutable)
-            implementation(kotlinx.datetime)
-            implementation(kotlinx.io.core)
-            implementation(kotlinx.io.bytestring)
-            implementation(kotlinx.serialization.json)
+            implementation(jetbrains.kotlinx.atomicfu)
+            implementation(jetbrains.kotlinx.coroutines.core)
+            implementation(jetbrains.kotlinx.collections.immutable)
+            implementation(jetbrains.kotlinx.datetime)
+            implementation(jetbrains.kotlinx.io.core)
+            implementation(jetbrains.kotlinx.io.bytestring)
+            implementation(jetbrains.kotlinx.serialization.json)
             implementation(ktor.client.core)
             implementation(ktor.client.encoding)
             implementation(ktor.client.content.negotiation)
             implementation(ktor.serialization.kotlinx.json)
         }
         commonTest.dependencies {
-            implementation(kotlinx.coroutines.test)
+            implementation(jetbrains.kotlinx.coroutines.test)
         }
         jsMain.dependencies {
-            implementation(ktor.client.js)
+            implementation(ktor.client.engine.js)
         }
         cioMain.dependencies {
-            implementation(ktor.client.cio)
+            implementation(ktor.client.engine.cio)
         }
         all {
             languageSettings.apply {
